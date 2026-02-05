@@ -1,26 +1,267 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ===== 루미나 춘향 테마 (야간 관광) ===== */
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+
+  /* 루미나 컬러 */
+  --color-lumina-primary: var(--lumina-primary);
+  --color-lumina-secondary: var(--lumina-secondary);
+  --color-lumina-accent: var(--lumina-accent);
+  --color-lumina-gold: var(--lumina-gold);
+
+  /* 계절 컬러 */
+  --color-spring: var(--spring);
+  --color-summer: var(--summer);
+  --color-autumn: var(--autumn);
+  --color-winter: var(--winter);
+
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --radius: 0.75rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  /* 배경 (야간) */
+  --background: #0A0E1A;
+  --foreground: #F8FAFC;
+  --card: #1A1F35;
+  --card-foreground: #F8FAFC;
+
+  /* 메인 컬러 */
+  --primary: #A855F7;
+  --primary-foreground: #FFFFFF;
+  --secondary: #FF6B9D;
+  --secondary-foreground: #FFFFFF;
+  --accent: #00D2FF;
+  --accent-foreground: #0A0E1A;
+
+  --muted: #2A2F45;
+  --muted-foreground: #94A3B8;
+  --border: #334155;
+
+  /* 루미나 특수 컬러 */
+  --lumina-primary: #A855F7;
+  --lumina-secondary: #FF6B9D;
+  --lumina-accent: #00D2FF;
+  --lumina-gold: #FFD700;
+
+  /* 계절 컬러 */
+  --spring: #FF9BD2;
+  --summer: #22C55E;
+  --autumn: #F59E0B;
+  --winter: #60A5FA;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* ===== 커스텀 애니메이션 ===== */
+
+@keyframes lantern-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.8;
+  }
+  25% {
+    transform: translateY(-15px) rotate(2deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-8px) rotate(-1deg);
+    opacity: 0.9;
+  }
+  75% {
+    transform: translateY(-20px) rotate(1deg);
+    opacity: 1;
+  }
+}
+
+@keyframes light-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px var(--lumina-primary), 0 0 40px var(--lumina-primary);
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 0 0 40px var(--lumina-primary), 0 0 80px var(--lumina-primary), 0 0 120px var(--lumina-secondary);
+    opacity: 0.9;
+  }
+}
+
+@keyframes glow-neon {
+  0%, 100% {
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+  }
+  50% {
+    text-shadow: 0 0 20px currentColor, 0 0 40px currentColor, 0 0 60px currentColor, 0 0 80px currentColor;
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes star-twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes scroll-indicator {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(10px);
+    opacity: 0.5;
+  }
+}
+
+/* 애니메이션 클래스 */
+.animate-lantern-float {
+  animation: lantern-float 6s ease-in-out infinite;
+}
+
+.animate-light-pulse {
+  animation: light-pulse 3s ease-in-out infinite;
+}
+
+.animate-glow-neon {
+  animation: glow-neon 2s ease-in-out infinite;
+}
+
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+.animate-star-twinkle {
+  animation: star-twinkle 3s ease-in-out infinite;
+}
+
+.animate-scroll-indicator {
+  animation: scroll-indicator 2s ease-in-out infinite;
+}
+
+/* ===== 그라디언트 ===== */
+
+.gradient-lumina {
+  background: linear-gradient(135deg, var(--lumina-primary) 0%, var(--lumina-secondary) 50%, var(--lumina-accent) 100%);
+}
+
+.gradient-night-sky {
+  background: linear-gradient(180deg, #0A0E1A 0%, #1A1F35 50%, #2A2F45 100%);
+}
+
+.gradient-spring {
+  background: linear-gradient(135deg, var(--spring) 0%, #FF69B4 100%);
+}
+
+.gradient-summer {
+  background: linear-gradient(135deg, var(--summer) 0%, #16A34A 100%);
+}
+
+.gradient-autumn {
+  background: linear-gradient(135deg, var(--autumn) 0%, #D97706 100%);
+}
+
+.gradient-winter {
+  background: linear-gradient(135deg, var(--winter) 0%, #3B82F6 100%);
+}
+
+/* ===== 글로우 효과 ===== */
+
+.glow-primary {
+  box-shadow: 0 0 20px var(--lumina-primary), 0 0 40px rgba(168, 85, 247, 0.3);
+}
+
+.glow-secondary {
+  box-shadow: 0 0 20px var(--lumina-secondary), 0 0 40px rgba(255, 107, 157, 0.3);
+}
+
+.glow-accent {
+  box-shadow: 0 0 20px var(--lumina-accent), 0 0 40px rgba(0, 210, 255, 0.3);
+}
+
+.glow-gold {
+  box-shadow: 0 0 20px var(--lumina-gold), 0 0 40px rgba(255, 215, 0, 0.3);
+}
+
+/* 텍스트 글로우 */
+.text-glow-primary {
+  text-shadow: 0 0 10px var(--lumina-primary), 0 0 20px var(--lumina-primary);
+}
+
+.text-glow-secondary {
+  text-shadow: 0 0 10px var(--lumina-secondary), 0 0 20px var(--lumina-secondary);
+}
+
+.text-glow-gold {
+  text-shadow: 0 0 10px var(--lumina-gold), 0 0 20px var(--lumina-gold);
+}
+
+/* ===== 카드 스타일 ===== */
+
+.card-lumina {
+  background: linear-gradient(135deg, rgba(26, 31, 53, 0.9) 0%, rgba(42, 47, 69, 0.9) 100%);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.card-lumina:hover {
+  border-color: rgba(168, 85, 247, 0.5);
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.2);
+}
+
+/* ===== 스크롤바 스타일 ===== */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--lumina-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--lumina-secondary);
+}
+
+/* ===== 셀렉션 스타일 ===== */
+
+::selection {
+  background: var(--lumina-primary);
+  color: white;
 }
