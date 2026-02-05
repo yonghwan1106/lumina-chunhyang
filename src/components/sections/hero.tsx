@@ -155,7 +155,10 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4"
         >
-          <span className="gradient-lumina bg-clip-text text-transparent animate-gradient-shift">
+          <span
+            className="bg-gradient-to-r from-lumina-primary via-lumina-secondary to-lumina-accent bg-clip-text text-transparent"
+            style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
+          >
             {hero.title}
           </span>
         </motion.h1>
