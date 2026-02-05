@@ -1,6 +1,76 @@
 @import "tailwindcss";
 
-/* ===== 루미나 춘향 테마 (야간 관광) ===== */
+/* =========================================================
+   루미나 춘향 디자인 시스템
+   "달빛 아래 춘향의 밤" - 동양적 럭셔리 + 현대적 세련미
+   ========================================================= */
+
+/* ===== 커스텀 폰트 정의 ===== */
+@layer base {
+  :root {
+    /* 폰트 스택 */
+    --font-display: "Noto Serif KR", "Batang", serif;
+    --font-accent: "Nanum Myeongjo", "Batang", serif;
+    --font-body: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+    /* ===== 컬러 시스템 재정의 ===== */
+    /* 배경: 먹색에 가까운 깊은 밤하늘 */
+    --background: #050810;
+    --background-elevated: #0c1220;
+    --foreground: #F4F1ED;
+
+    /* 카드: 한지 질감을 연상시키는 반투명 */
+    --card: rgba(15, 20, 35, 0.85);
+    --card-foreground: #F4F1ED;
+    --card-border: rgba(139, 92, 246, 0.15);
+
+    /* 주색: 자주색 (한국 전통 고귀한 색) */
+    --primary: #8B5CF6;
+    --primary-deep: #6D28D9;
+    --primary-glow: rgba(139, 92, 246, 0.4);
+    --primary-foreground: #FFFFFF;
+
+    /* 보조색: 복숭아꽃색/연분홍 (춘향의 젊음) */
+    --secondary: #F472B6;
+    --secondary-deep: #DB2777;
+    --secondary-glow: rgba(244, 114, 182, 0.4);
+    --secondary-foreground: #FFFFFF;
+
+    /* 강조색: 옥색/비취색 (동양적 청아함) */
+    --accent: #2DD4BF;
+    --accent-deep: #14B8A6;
+    --accent-glow: rgba(45, 212, 191, 0.4);
+    --accent-foreground: #0A0E1A;
+
+    /* 금색: 등불의 온기, 전통 장식 */
+    --gold: #F59E0B;
+    --gold-deep: #D97706;
+    --gold-glow: rgba(245, 158, 11, 0.5);
+
+    /* 달빛: 은은한 흰색 */
+    --moonlight: rgba(244, 241, 237, 0.08);
+    --moonlight-strong: rgba(244, 241, 237, 0.15);
+
+    --muted: #1E2433;
+    --muted-foreground: #9CA3AF;
+    --border: rgba(139, 92, 246, 0.2);
+
+    /* 루미나 특수 컬러 (기존 호환) */
+    --lumina-primary: var(--primary);
+    --lumina-secondary: var(--secondary);
+    --lumina-accent: var(--accent);
+    --lumina-gold: var(--gold);
+
+    /* 계절 컬러 - 더 세련된 톤 */
+    --spring: #FDA4AF;
+    --summer: #34D399;
+    --autumn: #FBBF24;
+    --winter: #93C5FD;
+
+    --radius: 0.75rem;
+    --radius-lg: 1.25rem;
+  }
+}
 
 @theme inline {
   --color-background: var(--background);
@@ -16,102 +86,206 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-border: var(--border);
-
-  /* 루미나 컬러 */
   --color-lumina-primary: var(--lumina-primary);
   --color-lumina-secondary: var(--lumina-secondary);
   --color-lumina-accent: var(--lumina-accent);
   --color-lumina-gold: var(--lumina-gold);
-
-  /* 계절 컬러 */
   --color-spring: var(--spring);
   --color-summer: var(--summer);
   --color-autumn: var(--autumn);
   --color-winter: var(--winter);
-
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-display);
   --radius: 0.75rem;
 }
 
-:root {
-  /* 배경 (야간) */
-  --background: #0A0E1A;
-  --foreground: #F8FAFC;
-  --card: #1A1F35;
-  --card-foreground: #F8FAFC;
-
-  /* 메인 컬러 */
-  --primary: #A855F7;
-  --primary-foreground: #FFFFFF;
-  --secondary: #FF6B9D;
-  --secondary-foreground: #FFFFFF;
-  --accent: #00D2FF;
-  --accent-foreground: #0A0E1A;
-
-  --muted: #2A2F45;
-  --muted-foreground: #94A3B8;
-  --border: #334155;
-
-  /* 루미나 특수 컬러 */
-  --lumina-primary: #A855F7;
-  --lumina-secondary: #FF6B9D;
-  --lumina-accent: #00D2FF;
-  --lumina-gold: #FFD700;
-
-  /* 계절 컬러 */
-  --spring: #FF9BD2;
-  --summer: #22C55E;
-  --autumn: #F59E0B;
-  --winter: #60A5FA;
-}
-
+/* ===== 기본 스타일 ===== */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-body);
+  font-feature-settings: "ss01", "ss02";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-/* ===== 커스텀 애니메이션 ===== */
+/* 제목용 폰트 */
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
 
+/* 강조/인용용 폰트 */
+.font-accent, blockquote {
+  font-family: var(--font-accent);
+}
+
+/* =========================================================
+   배경 텍스처 & 효과
+   ========================================================= */
+
+/* 한지 텍스처 오버레이 - 미세한 노이즈 */
+.texture-hanji::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.015;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+/* 필름 그레인 효과 */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+/* 달빛 그라데이션 배경 */
+.bg-moonlit {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%, var(--moonlight-strong) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 70% 20%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 30% at 30% 70%, rgba(244, 114, 182, 0.03) 0%, transparent 50%),
+    var(--background);
+}
+
+/* 밤하늘 그라데이션 - 더 깊은 */
+.gradient-night-sky {
+  background: linear-gradient(
+    180deg,
+    #050810 0%,
+    #0c1220 30%,
+    #111827 60%,
+    #1a1f35 100%
+  );
+}
+
+/* 수묵화 번짐 효과 배경 */
+.bg-ink-wash {
+  background:
+    radial-gradient(ellipse 100% 100% at 20% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 80% 80% at 80% 20%, rgba(244, 114, 182, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 60% at 50% 50%, rgba(45, 212, 191, 0.04) 0%, transparent 50%);
+}
+
+/* =========================================================
+   애니메이션 시스템
+   ========================================================= */
+
+/* 등불 흔들림 - 더 자연스럽게 */
 @keyframes lantern-float {
   0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-    opacity: 0.8;
+    transform: translateY(0) rotate(0deg) scale(1);
+    filter: brightness(1);
   }
-  25% {
-    transform: translateY(-15px) rotate(2deg);
-    opacity: 1;
+  15% {
+    transform: translateY(-8px) rotate(1.5deg) scale(1.02);
   }
-  50% {
-    transform: translateY(-8px) rotate(-1deg);
-    opacity: 0.9;
+  30% {
+    transform: translateY(-15px) rotate(-1deg) scale(1);
+    filter: brightness(1.1);
+  }
+  45% {
+    transform: translateY(-10px) rotate(2deg) scale(1.01);
+  }
+  60% {
+    transform: translateY(-20px) rotate(-0.5deg) scale(1);
+    filter: brightness(1.05);
   }
   75% {
-    transform: translateY(-20px) rotate(1deg);
+    transform: translateY(-12px) rotate(1deg) scale(1.02);
+  }
+  90% {
+    transform: translateY(-5px) rotate(-1.5deg) scale(1);
+  }
+}
+
+/* 빛 맥동 - 호흡하듯 */
+@keyframes light-breathe {
+  0%, 100% {
+    opacity: 0.6;
+    box-shadow:
+      0 0 20px var(--primary-glow),
+      0 0 40px var(--primary-glow);
+  }
+  50% {
+    opacity: 1;
+    box-shadow:
+      0 0 30px var(--primary-glow),
+      0 0 60px var(--primary-glow),
+      0 0 90px var(--secondary-glow);
+  }
+}
+
+/* 잉크 번짐 reveal */
+@keyframes ink-reveal {
+  0% {
+    clip-path: circle(0% at 50% 50%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    clip-path: circle(150% at 50% 50%);
     opacity: 1;
   }
 }
 
-@keyframes light-pulse {
+/* 달빛 깜빡임 */
+@keyframes moonlight-flicker {
   0%, 100% {
-    box-shadow: 0 0 20px var(--lumina-primary), 0 0 40px var(--lumina-primary);
+    opacity: 0.3;
+    filter: blur(0px);
+  }
+  25% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+    filter: blur(1px);
+  }
+  75% {
+    opacity: 0.4;
+  }
+}
+
+/* 별 반짝임 - 더 섬세하게 */
+@keyframes star-twinkle {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+    filter: blur(0px);
+  }
+  50% {
     opacity: 1;
-  }
-  50% {
-    box-shadow: 0 0 40px var(--lumina-primary), 0 0 80px var(--lumina-primary), 0 0 120px var(--lumina-secondary);
-    opacity: 0.9;
+    transform: scale(1.3);
+    filter: blur(0.5px);
   }
 }
 
-@keyframes glow-neon {
-  0%, 100% {
-    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+/* 부드러운 페이드 업 */
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
   }
-  50% {
-    text-shadow: 0 0 20px currentColor, 0 0 40px currentColor, 0 0 60px currentColor, 0 0 80px currentColor;
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
+/* 그라데이션 시프트 */
 @keyframes gradient-shift {
   0%, 100% {
     background-position: 0% 50%;
@@ -121,39 +295,71 @@ body {
   }
 }
 
-@keyframes star-twinkle {
-  0%, 100% {
-    opacity: 0.3;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.2);
-  }
-}
-
-@keyframes scroll-indicator {
+/* 스크롤 인디케이터 */
+@keyframes scroll-hint {
   0%, 100% {
     transform: translateY(0);
     opacity: 1;
   }
   50% {
-    transform: translateY(10px);
+    transform: translateY(8px);
     opacity: 0.5;
   }
 }
 
-/* 애니메이션 클래스 */
+/* 벚꽃 떨어지기 */
+@keyframes cherry-fall {
+  0% {
+    transform: translateY(-10%) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(100px) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* 물결 퍼지기 */
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* 애니메이션 유틸리티 클래스 */
 .animate-lantern-float {
-  animation: lantern-float 6s ease-in-out infinite;
+  animation: lantern-float 8s ease-in-out infinite;
 }
 
-.animate-light-pulse {
-  animation: light-pulse 3s ease-in-out infinite;
+.animate-light-breathe {
+  animation: light-breathe 4s ease-in-out infinite;
 }
 
-.animate-glow-neon {
-  animation: glow-neon 2s ease-in-out infinite;
+.animate-ink-reveal {
+  animation: ink-reveal 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-moonlight {
+  animation: moonlight-flicker 5s ease-in-out infinite;
+}
+
+.animate-star-twinkle {
+  animation: star-twinkle 3s ease-in-out infinite;
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .animate-gradient-shift {
@@ -161,85 +367,301 @@ body {
   animation: gradient-shift 8s ease infinite;
 }
 
-.animate-star-twinkle {
-  animation: star-twinkle 3s ease-in-out infinite;
+.animate-scroll-hint {
+  animation: scroll-hint 2s ease-in-out infinite;
 }
 
-.animate-scroll-indicator {
-  animation: scroll-indicator 2s ease-in-out infinite;
+.animate-cherry-fall {
+  animation: cherry-fall 10s linear infinite;
 }
 
-/* ===== 그라디언트 ===== */
+/* =========================================================
+   그라데이션 시스템
+   ========================================================= */
 
+/* 루미나 메인 그라데이션 - 더 풍부하게 */
 .gradient-lumina {
-  background: linear-gradient(135deg, var(--lumina-primary) 0%, var(--lumina-secondary) 50%, var(--lumina-accent) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--primary) 0%,
+    var(--secondary) 50%,
+    var(--accent) 100%
+  );
 }
 
-.gradient-night-sky {
-  background: linear-gradient(180deg, #0A0E1A 0%, #1A1F35 50%, #2A2F45 100%);
+/* 자주-금색 (고귀한 전통) */
+.gradient-royal {
+  background: linear-gradient(
+    135deg,
+    var(--primary-deep) 0%,
+    var(--primary) 40%,
+    var(--gold) 100%
+  );
 }
 
+/* 달빛 그라데이션 */
+.gradient-moonbeam {
+  background: linear-gradient(
+    180deg,
+    rgba(244, 241, 237, 0.1) 0%,
+    rgba(139, 92, 246, 0.05) 50%,
+    transparent 100%
+  );
+}
+
+/* 계절 그라데이션 - 더 세련된 */
 .gradient-spring {
-  background: linear-gradient(135deg, var(--spring) 0%, #FF69B4 100%);
+  background: linear-gradient(135deg, #FDA4AF 0%, #F472B6 50%, #E879F9 100%);
 }
 
 .gradient-summer {
-  background: linear-gradient(135deg, var(--summer) 0%, #16A34A 100%);
+  background: linear-gradient(135deg, #34D399 0%, #2DD4BF 50%, #22D3EE 100%);
 }
 
 .gradient-autumn {
-  background: linear-gradient(135deg, var(--autumn) 0%, #D97706 100%);
+  background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 50%, #F97316 100%);
 }
 
 .gradient-winter {
-  background: linear-gradient(135deg, var(--winter) 0%, #3B82F6 100%);
+  background: linear-gradient(135deg, #93C5FD 0%, #A5B4FC 50%, #C4B5FD 100%);
 }
 
-/* ===== 글로우 효과 ===== */
+/* =========================================================
+   글로우 & 쉐도우 효과
+   ========================================================= */
 
+/* 등불 글로우 */
+.glow-lantern {
+  box-shadow:
+    0 0 20px var(--gold-glow),
+    0 0 40px var(--gold-glow),
+    0 0 60px rgba(245, 158, 11, 0.2);
+}
+
+/* 자주색 글로우 */
 .glow-primary {
-  box-shadow: 0 0 20px var(--lumina-primary), 0 0 40px rgba(168, 85, 247, 0.3);
+  box-shadow:
+    0 0 20px var(--primary-glow),
+    0 0 40px rgba(139, 92, 246, 0.2);
 }
 
+/* 분홍색 글로우 */
 .glow-secondary {
-  box-shadow: 0 0 20px var(--lumina-secondary), 0 0 40px rgba(255, 107, 157, 0.3);
+  box-shadow:
+    0 0 20px var(--secondary-glow),
+    0 0 40px rgba(244, 114, 182, 0.2);
 }
 
+/* 옥색 글로우 */
 .glow-accent {
-  box-shadow: 0 0 20px var(--lumina-accent), 0 0 40px rgba(0, 210, 255, 0.3);
+  box-shadow:
+    0 0 20px var(--accent-glow),
+    0 0 40px rgba(45, 212, 191, 0.2);
 }
 
+/* 금색 글로우 */
 .glow-gold {
-  box-shadow: 0 0 20px var(--lumina-gold), 0 0 40px rgba(255, 215, 0, 0.3);
+  box-shadow:
+    0 0 25px var(--gold-glow),
+    0 0 50px rgba(245, 158, 11, 0.3);
 }
 
 /* 텍스트 글로우 */
 .text-glow-primary {
-  text-shadow: 0 0 10px var(--lumina-primary), 0 0 20px var(--lumina-primary);
+  text-shadow:
+    0 0 10px var(--primary-glow),
+    0 0 20px var(--primary-glow),
+    0 0 40px rgba(139, 92, 246, 0.3);
 }
 
 .text-glow-secondary {
-  text-shadow: 0 0 10px var(--lumina-secondary), 0 0 20px var(--lumina-secondary);
+  text-shadow:
+    0 0 10px var(--secondary-glow),
+    0 0 20px rgba(244, 114, 182, 0.4);
 }
 
 .text-glow-gold {
-  text-shadow: 0 0 10px var(--lumina-gold), 0 0 20px var(--lumina-gold);
+  text-shadow:
+    0 0 10px var(--gold-glow),
+    0 0 20px var(--gold-glow),
+    0 0 30px rgba(245, 158, 11, 0.3);
 }
 
-/* ===== 카드 스타일 ===== */
+/* 달빛 텍스트 */
+.text-glow-moon {
+  text-shadow:
+    0 0 20px rgba(244, 241, 237, 0.3),
+    0 0 40px rgba(244, 241, 237, 0.1);
+}
 
+/* =========================================================
+   카드 스타일
+   ========================================================= */
+
+/* 기본 루미나 카드 - 한지 느낌 */
 .card-lumina {
-  background: linear-gradient(135deg, rgba(26, 31, 53, 0.9) 0%, rgba(42, 47, 69, 0.9) 100%);
-  border: 1px solid rgba(168, 85, 247, 0.2);
-  backdrop-filter: blur(10px);
+  background: linear-gradient(
+    145deg,
+    rgba(15, 20, 35, 0.9) 0%,
+    rgba(20, 25, 45, 0.85) 100%
+  );
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(12px);
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-lumina::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(139, 92, 246, 0.1) 0%,
+    transparent 50%,
+    rgba(244, 114, 182, 0.05) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
 .card-lumina:hover {
-  border-color: rgba(168, 85, 247, 0.5);
-  box-shadow: 0 0 30px rgba(168, 85, 247, 0.2);
+  border-color: rgba(139, 92, 246, 0.4);
+  transform: translateY(-4px);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 0 40px var(--primary-glow);
 }
 
-/* ===== 스크롤바 스타일 ===== */
+.card-lumina:hover::before {
+  opacity: 1;
+}
+
+/* 유리 형태 카드 */
+.card-glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================================================
+   버튼 스타일
+   ========================================================= */
+
+/* 주 버튼 - 등불 느낌 */
+.btn-lumina {
+  position: relative;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-deep) 100%);
+  color: white;
+  font-weight: 600;
+  padding: 0.875rem 2rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-lumina::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn-lumina:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 10px 30px var(--primary-glow),
+    0 0 40px var(--primary-glow);
+}
+
+.btn-lumina:hover::before {
+  opacity: 1;
+}
+
+.btn-lumina span {
+  position: relative;
+  z-index: 1;
+}
+
+/* 보조 버튼 - 아웃라인 */
+.btn-outline {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 0.875rem 2rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 0 30px var(--primary-glow);
+}
+
+/* =========================================================
+   장식 요소
+   ========================================================= */
+
+/* 전통 문양 테두리 */
+.border-traditional {
+  border-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--primary) 20%,
+    var(--gold) 50%,
+    var(--primary) 80%,
+    transparent 100%
+  ) 1;
+}
+
+/* 세로 구분선 - 동양적 */
+.divider-vertical {
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    var(--primary) 20%,
+    var(--gold) 50%,
+    var(--primary) 80%,
+    transparent 100%
+  );
+}
+
+/* 가로 구분선 */
+.divider-horizontal {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--primary) 20%,
+    var(--gold) 50%,
+    var(--primary) 80%,
+    transparent 100%
+  );
+}
+
+/* 장식 점 */
+.dot-decoration {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 10px var(--gold-glow);
+}
+
+/* =========================================================
+   스크롤바 스타일
+   ========================================================= */
 
 ::-webkit-scrollbar {
   width: 8px;
@@ -251,17 +673,60 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--lumina-primary);
+  background: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 100%);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--lumina-secondary);
+  background: linear-gradient(180deg, var(--secondary) 0%, var(--primary) 100%);
 }
 
-/* ===== 셀렉션 스타일 ===== */
+/* =========================================================
+   선택 스타일
+   ========================================================= */
 
 ::selection {
-  background: var(--lumina-primary);
+  background: var(--primary);
   color: white;
+}
+
+::-moz-selection {
+  background: var(--primary);
+  color: white;
+}
+
+/* =========================================================
+   반응형 타이포그래피
+   ========================================================= */
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
+}
+
+/* =========================================================
+   접근성
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 포커스 스타일 */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }

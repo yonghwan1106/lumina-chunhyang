@@ -1,17 +1,23 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Noto_Serif_KR, Nanum_Myeongjo } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/components/shared/navigation";
 import { Footer } from "@/components/sections/footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// 제목용: 전통적 품격의 세리프
+const notoSerifKR = Noto_Serif_KR({
+  variable: "--font-display",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "900"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// 강조/인용용: 붓글씨 느낌
+const nanumMyeongjo = Nanum_Myeongjo({
+  variable: "--font-accent",
   subsets: ["latin"],
+  weight: ["400", "700", "800"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -34,8 +40,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
+      <head>
+        {/* Pretendard - 현대적 한글 본문 폰트 */}
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+        />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
+        className={`${notoSerifKR.variable} ${nanumMyeongjo.variable} antialiased bg-background text-foreground`}
       >
         <Navigation />
         <main>{children}</main>
