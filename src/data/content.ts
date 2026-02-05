@@ -140,10 +140,88 @@ export const siteContent = {
 };
 
 export const navigation = [
-  { label: "개요", href: "#executive" },
-  { label: "킬러 콘텐츠", href: "#killer" },
-  { label: "스토리텔링", href: "#storytelling" },
-  { label: "경제효과", href: "#economic" },
-  { label: "로드맵", href: "#timeline" },
-  { label: "예산", href: "#budget" },
+  { label: "개요", href: "/overview" },
+  { label: "킬러 콘텐츠", href: "/contents" },
+  { label: "스토리텔링", href: "/story" },
+  { label: "경제효과", href: "/impact" },
+  { label: "로드맵", href: "/roadmap" },
+  { label: "예산", href: "/budget" },
+];
+
+export const vision = {
+  title: "비전 & 미션",
+  vision: "대한민국을 대표하는 세계적 야간 관광 축제",
+  mission: "전통 사랑 이야기와 첨단 기술의 융합으로 잊을 수 없는 감동을 선사",
+  values: [
+    { title: "혁신", description: "전통을 현대적으로 재해석하는 창의적 접근" },
+    { title: "감동", description: "방문객의 마음을 움직이는 스토리텔링" },
+    { title: "지속가능성", description: "환경과 지역사회를 고려한 책임있는 운영" },
+    { title: "글로벌", description: "세계인이 공감하는 보편적 사랑의 가치" }
+  ]
+};
+
+export const swotAnalysis = {
+  strengths: [
+    "유네스코 세계유산 춘향전의 브랜드 파워",
+    "광한루원의 역사적 상징성과 아름다운 경관",
+    "충성도 높은 기존 춘향제 방문객 기반",
+    "남원시의 적극적인 행정 지원"
+  ],
+  weaknesses: [
+    "수도권 대비 접근성 한계",
+    "야간 관광 인프라 부족",
+    "전문 인력 확보의 어려움",
+    "계절적 한계 (우천 시 대응)"
+  ],
+  opportunities: [
+    "야간 관광에 대한 수요 급증 (MZ세대)",
+    "K-컬처 글로벌 인기 상승",
+    "디지털 기술 발전으로 새로운 체험 가능",
+    "국내 야간 빛 축제 시장의 성장"
+  ],
+  threats: [
+    "유사 야간 축제와의 경쟁 심화",
+    "경기 침체로 인한 여가 지출 감소",
+    "기후 변화에 따른 날씨 불확실성",
+    "코로나19 등 감염병 재유행 가능성"
+  ]
+};
+
+export const benchmarks = [
+  {
+    name: "나바나노사토",
+    country: "일본",
+    visitors: "300만 명/년",
+    feature: "LED 터널, 플라워 가든",
+    lesson: "계절별 테마 변화로 재방문 유도"
+  },
+  {
+    name: "가든스 바이 더 베이",
+    country: "싱가포르",
+    visitors: "500만 명/년",
+    feature: "슈퍼트리 그로브, 라이트쇼",
+    lesson: "랜드마크 조형물로 인지도 확보"
+  },
+  {
+    name: "비비드 시드니",
+    country: "호주",
+    visitors: "270만 명/년",
+    feature: "도시 전체 빛 축제",
+    lesson: "지역 예술가 참여로 콘텐츠 다양화"
+  },
+  {
+    name: "암스테르담 라이트 페스티벌",
+    country: "네덜란드",
+    visitors: "100만 명/년",
+    feature: "운하 빛 설치작품",
+    lesson: "지역 특색을 살린 스토리텔링"
+  }
+];
+
+export const kpiTargets = [
+  { year: 2026, visitors: 100, revenue: 1275, satisfaction: 85, globalShare: 5 },
+  { year: 2027, visitors: 130, revenue: 1650, satisfaction: 88, globalShare: 8 },
+  { year: 2028, visitors: 150, revenue: 1900, satisfaction: 90, globalShare: 12 },
+  { year: 2029, visitors: 170, revenue: 2150, satisfaction: 92, globalShare: 15 },
+  { year: 2030, visitors: 200, revenue: 2500, satisfaction: 95, globalShare: 20 }
 ];

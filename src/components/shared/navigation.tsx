@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -9,6 +11,7 @@ import { navigation } from "@/data/content";
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,12 +22,13 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+  const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
+  };
+
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
   };
 
   return (
@@ -42,33 +46,31 @@ export function Navigation() {
       >
         <div className="container mx-auto px-4 flex items-center justify-between">
           {/* Logo */}
-          <a
-            href="#"
+          <Link
+            href="/"
             className="flex items-center gap-2 text-xl font-bold"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
           >
             <Sparkles className="w-6 h-6 text-lumina-primary" />
             <span className="gradient-lumina bg-clip-text text-transparent">
               루미나 춘향
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
             {navigation.map((item) => (
-              <button
+              <Link
                 key={item.href}
-                onClick={() => scrollToSection(item.href)}
+                href={item.href}
                 className={cn(
                   "px-4 py-2 rounded-full text-sm font-medium transition-all duration-200",
-                  "text-muted-foreground hover:text-foreground hover:bg-muted"
+                  isActive(item.href)
+                    ? "bg-lumina-primary/20 text-lumina-primary"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
                 )}
               >
                 {item.label}
-              </button>
+              </Link>
             ))}
           </div>
 
@@ -96,17 +98,40 @@ export function Navigation() {
             exit={{ opacity: 0 }}
           >
             <div className="flex flex-col items-center justify-center h-full gap-6">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0 }}
+              >
+                <Link
+                  href="/"
+                  onClick={closeMobileMenu}
+                  className={cn(
+                    "text-2xl font-medium transition-colors",
+                    pathname === "/" ? "text-lumina-primary" : "text-foreground hover:text-lumina-primary"
+                  )}
+                >
+                  홈
+                </Link>
+              </motion.div>
               {navigation.map((item, index) => (
-                <motion.button
+                <motion.div
                   key={item.href}
-                  onClick={() => scrollToSection(item.href)}
-                  className="text-2xl font-medium text-foreground hover:text-lumina-primary transition-colors"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ delay: (index + 1) * 0.1 }}
                 >
-                  {item.label}
-                </motion.button>
+                  <Link
+                    href={item.href}
+                    onClick={closeMobileMenu}
+                    className={cn(
+                      "text-2xl font-medium transition-colors",
+                      isActive(item.href) ? "text-lumina-primary" : "text-foreground hover:text-lumina-primary"
+                    )}
+                  >
+                    {item.label}
+                  </Link>
+                </motion.div>
               ))}
             </div>
           </motion.div>
