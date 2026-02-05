@@ -32,6 +32,10 @@ function StatCard({ icon, title, value, unit, description, index }: StatCardProp
     "text-lumina-gold border-lumina-gold/30",
   ];
 
+  // 숫자로 변환 가능한지 확인
+  const numericValue = parseFloat(value.replace(/,/g, ""));
+  const isNumeric = !isNaN(numericValue);
+
   return (
     <div
       className={cn(
@@ -46,11 +50,17 @@ function StatCard({ icon, title, value, unit, description, index }: StatCardProp
       </div>
 
       <div className="mb-3">
-        <AnimatedCounter
-          target={parseFloat(value.replace(/,/g, ""))}
-          suffix={unit}
-          className="text-4xl font-bold text-foreground"
-        />
+        {isNumeric ? (
+          <AnimatedCounter
+            target={numericValue}
+            suffix={unit}
+            className="text-4xl font-bold text-foreground"
+          />
+        ) : (
+          <span className="text-4xl font-bold text-foreground">
+            {value}<span className="text-2xl ml-1">{unit}</span>
+          </span>
+        )}
       </div>
 
       <p className="text-sm text-muted-foreground">{description}</p>
