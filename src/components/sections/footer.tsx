@@ -121,7 +121,10 @@ export function Footer() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">
               <Sparkles className="w-5 h-5 text-lumina-primary" />
-              <span className="text-lg font-bold gradient-lumina bg-clip-text text-transparent">
+              <span
+                className="text-lg font-bold bg-gradient-to-r from-lumina-primary via-lumina-secondary to-lumina-accent bg-clip-text text-transparent"
+                style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
+              >
                 루미나 춘향
               </span>
             </div>

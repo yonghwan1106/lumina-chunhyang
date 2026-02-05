@@ -51,7 +51,10 @@ export function Navigation() {
             className="flex items-center gap-2 text-xl font-bold"
           >
             <Sparkles className="w-6 h-6 text-lumina-primary" />
-            <span className="gradient-lumina bg-clip-text text-transparent">
+            <span
+              className="bg-gradient-to-r from-lumina-primary via-lumina-secondary to-lumina-accent bg-clip-text text-transparent"
+              style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
+            >
               루미나 춘향
             </span>
           </Link>
