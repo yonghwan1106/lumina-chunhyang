@@ -2,7 +2,17 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Cherry, Sun, Leaf, Snowflake, ArrowRight, LucideIcon } from "lucide-react";
+import {
+  Cherry,
+  Sun,
+  Leaf,
+  Snowflake,
+  ArrowRight,
+  LucideIcon,
+  Smartphone,
+  Monitor,
+  Sparkles,
+} from "lucide-react";
 import { PageHeader } from "@/components/shared/page-header";
 import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/shared/scroll-reveal";
 import { InfographicCard } from "@/components/shared/infographic-card";
@@ -43,6 +53,14 @@ const seasonColors: Record<string, { gradient: string; border: string; text: str
     bg: "bg-winter/10",
   },
 };
+
+// B1: 스토리 개요 계절 아이콘 매핑
+const overviewSeasonIcons: LucideIcon[] = [Cherry, Sun, Leaf, Snowflake];
+const overviewSeasonKeys = ["spring", "summer", "autumn", "winter"];
+
+// B2: 체험 유형 아이콘
+const experienceIcons: LucideIcon[] = [Smartphone, Monitor, Sparkles];
+const experienceColors = ["primary", "secondary", "accent"];
 
 export function StoryContent() {
   const { storytelling } = siteContent;
@@ -140,7 +158,7 @@ export function StoryContent() {
         </div>
       </section>
 
-      {/* Story Overview */}
+      {/* B1: Story Overview - 시각 강화 */}
       <section className="py-16 px-4 bg-gradient-to-b from-card/50 to-background">
         <div className="container mx-auto max-w-4xl">
           <ScrollReveal>
@@ -153,41 +171,47 @@ export function StoryContent() {
 
           <ScrollReveal delay={0.1}>
             <div className="prose prose-invert max-w-none">
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="card-lumina rounded-2xl p-6 border border-spring/30">
-                  <h3 className="text-xl font-bold text-spring mb-4">배경</h3>
-                  <p className="text-muted-foreground">
-                    조선 시대 전라도 남원. 퇴기 월매의 딸 춘향과 남원 부사의 아들 이몽룡은
-                    광한루에서 우연히 만나 첫눈에 사랑에 빠집니다. 신분의 차이에도 불구하고
-                    두 사람은 영원한 사랑을 맹세합니다.
-                  </p>
-                </div>
+              <div className="grid md:grid-cols-2 gap-8 relative">
+                {/* md 이상에서 가로 연결선 */}
+                <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-4rem)] h-px bg-gradient-to-r from-spring/20 via-summer/30 to-autumn/20" />
 
-                <div className="card-lumina rounded-2xl p-6 border border-summer/30">
-                  <h3 className="text-xl font-bold text-summer mb-4">시련</h3>
-                  <p className="text-muted-foreground">
-                    몽룡이 과거를 보러 한양으로 떠난 후, 새로 부임한 변학도가 춘향에게
-                    수청을 강요합니다. 춘향은 몽룡에 대한 정절을 지키며 거절하고,
-                    옥에 갇히게 됩니다.
-                  </p>
-                </div>
+                {[
+                  { title: "배경", season: "spring", text: "조선 시대 전라도 남원. 퇴기 월매의 딸 춘향과 남원 부사의 아들 이몽룡은 광한루에서 우연히 만나 첫눈에 사랑에 빠집니다. 신분의 차이에도 불구하고 두 사람은 영원한 사랑을 맹세합니다." },
+                  { title: "시련", season: "summer", text: "몽룡이 과거를 보러 한양으로 떠난 후, 새로 부임한 변학도가 춘향에게 수청을 강요합니다. 춘향은 몽룡에 대한 정절을 지키며 거절하고, 옥에 갇히게 됩니다." },
+                  { title: "기다림", season: "autumn", text: "옥에 갇힌 춘향은 죽음을 앞두고도 몽룡을 향한 사랑을 포기하지 않습니다. 한편 한양에서 과거에 급제한 몽룡은 암행어사가 되어 남원으로 향합니다." },
+                  { title: "재회", season: "winter", text: "변학도의 생일 잔치 날, 암행어사 출두로 악행이 드러나고 춘향은 구출됩니다. 마침내 재회한 두 사람은 영원한 사랑을 이루며, 이들의 이야기는 불멸의 사랑의 상징이 됩니다." },
+                ].map((item, index) => {
+                  const Icon = overviewSeasonIcons[index];
+                  const sKey = overviewSeasonKeys[index];
+                  const sColors = seasonColors[sKey];
 
-                <div className="card-lumina rounded-2xl p-6 border border-autumn/30">
-                  <h3 className="text-xl font-bold text-autumn mb-4">기다림</h3>
-                  <p className="text-muted-foreground">
-                    옥에 갇힌 춘향은 죽음을 앞두고도 몽룡을 향한 사랑을 포기하지 않습니다.
-                    한편 한양에서 과거에 급제한 몽룡은 암행어사가 되어 남원으로 향합니다.
-                  </p>
-                </div>
-
-                <div className="card-lumina rounded-2xl p-6 border border-winter/30">
-                  <h3 className="text-xl font-bold text-winter mb-4">재회</h3>
-                  <p className="text-muted-foreground">
-                    변학도의 생일 잔치 날, 암행어사 출두로 악행이 드러나고 춘향은 구출됩니다.
-                    마침내 재회한 두 사람은 영원한 사랑을 이루며, 이들의 이야기는
-                    불멸의 사랑의 상징이 됩니다.
-                  </p>
-                </div>
+                  return (
+                    <div
+                      key={item.title}
+                      className={cn(
+                        "card-glass rounded-2xl p-6 border relative",
+                        sColors.border
+                      )}
+                    >
+                      {/* Act 번호 배지 */}
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className={cn(
+                          "w-10 h-10 rounded-full flex items-center justify-center bg-gradient-to-br",
+                          sColors.gradient
+                        )}>
+                          <Icon className="w-5 h-5 text-white" />
+                        </div>
+                        <div>
+                          <span className={cn("text-xs font-bold uppercase tracking-wider", sColors.text)}>
+                            Act {index + 1}
+                          </span>
+                          <h3 className={cn("text-xl font-bold", sColors.text)}>{item.title}</h3>
+                        </div>
+                      </div>
+                      <p className="text-muted-foreground">{item.text}</p>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </ScrollReveal>
@@ -207,7 +231,7 @@ export function StoryContent() {
         </div>
       </section>
 
-      {/* Experience Types */}
+      {/* B2: Experience Types - 아이콘 추가 */}
       <section className="py-16 px-4 bg-gradient-to-b from-card/50 to-background">
         <div className="container mx-auto max-w-6xl">
           <ScrollReveal>
@@ -239,17 +263,29 @@ export function StoryContent() {
                 color: "accent"
               }
             ].map((type, index) => {
-              const colorClass = type.color === "primary" ? "border-lumina-primary/30 text-lumina-primary" :
-                type.color === "secondary" ? "border-lumina-secondary/30 text-lumina-secondary" :
-                "border-lumina-accent/30 text-lumina-accent";
+              const Icon = experienceIcons[index];
+              const colorKey = experienceColors[index];
+              const bgClass = colorKey === "primary" ? "bg-lumina-primary/10" :
+                colorKey === "secondary" ? "bg-lumina-secondary/10" : "bg-lumina-accent/10";
+              const borderClass = colorKey === "primary" ? "border-lumina-primary/30" :
+                colorKey === "secondary" ? "border-lumina-secondary/30" : "border-lumina-accent/30";
+              const textClass = colorKey === "primary" ? "text-lumina-primary" :
+                colorKey === "secondary" ? "text-lumina-secondary" : "text-lumina-accent";
 
               return (
                 <StaggerItem key={type.title}>
                   <div className={cn(
                     "card-lumina rounded-2xl p-6 border h-full",
-                    colorClass.split(" ")[0]
+                    borderClass
                   )}>
-                    <h3 className={cn("text-xl font-bold mb-3", colorClass.split(" ")[1])}>
+                    {/* 아이콘 박스 */}
+                    <div className={cn(
+                      "w-12 h-12 rounded-xl flex items-center justify-center mb-4 border",
+                      bgClass, borderClass
+                    )}>
+                      <Icon className={cn("w-6 h-6", textClass)} />
+                    </div>
+                    <h3 className={cn("text-xl font-bold mb-3", textClass)}>
                       {type.title}
                     </h3>
                     <p className="text-muted-foreground">{type.description}</p>

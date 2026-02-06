@@ -3,6 +3,8 @@ import { Noto_Serif_KR, Nanum_Myeongjo } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/components/shared/navigation";
 import { Footer } from "@/components/sections/footer";
+import { EventJsonLd, OrganizationJsonLd } from "@/components/shared/json-ld";
+import { BackToTop } from "@/components/shared/back-to-top";
 
 // 제목용: 전통적 품격의 세리프
 const notoSerifKR = Noto_Serif_KR({
@@ -21,15 +23,48 @@ const nanumMyeongjo = Nanum_Myeongjo({
 });
 
 export const metadata: Metadata = {
-  title: "루미나 춘향 | 2026 춘향제 야간 빛 축제",
-  description: "2026년 봄, 남원의 밤은 당신의 사랑으로 피어납니다. 대한민국 대표 야간 관광 축제 루미나 춘향과 함께하세요.",
-  keywords: ["춘향제", "남원", "야간관광", "빛축제", "루미나", "춘향", "광한루", "2026"],
+  metadataBase: new URL("https://lumina-chunhyang.vercel.app"),
+  title: {
+    default: "루미나 춘향 | 2026 춘향제 야간 빛 축제",
+    template: "%s | 루미나 춘향",
+  },
+  description:
+    "2026년 봄, 남원의 밤은 당신의 사랑으로 피어납니다. 대한민국 대표 야간 관광 축제 루미나 춘향과 함께하세요.",
+  keywords: [
+    "춘향제",
+    "남원",
+    "야간관광",
+    "빛축제",
+    "루미나",
+    "춘향",
+    "광한루",
+    "2026",
+  ],
   authors: [{ name: "남원시" }],
   openGraph: {
     title: "루미나 춘향 | 2026 춘향제 야간 빛 축제",
     description: "2026년 봄, 남원의 밤은 당신의 사랑으로 피어납니다",
     type: "website",
     locale: "ko_KR",
+    siteName: "루미나 춘향",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "루미나 춘향 - 2026 춘향제 야간 빛 축제",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "루미나 춘향 | 2026 춘향제 야간 빛 축제",
+    description: "2026년 봄, 남원의 밤은 당신의 사랑으로 피어납니다",
+    images: ["/opengraph-image"],
+  },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
 };
 
@@ -50,6 +85,8 @@ export default function RootLayout({
       <body
         className={`${notoSerifKR.variable} ${nanumMyeongjo.variable} antialiased bg-background text-foreground`}
       >
+        <EventJsonLd />
+        <OrganizationJsonLd />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-md focus:outline-none"
@@ -59,6 +96,7 @@ export default function RootLayout({
         <Navigation />
         <main id="main-content">{children}</main>
         <Footer />
+        <BackToTop />
       </body>
     </html>
   );

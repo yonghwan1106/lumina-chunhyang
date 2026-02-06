@@ -51,7 +51,7 @@ export function ContentsListContent() {
       <section className="py-16 px-4 bg-card/50">
         <div className="container mx-auto max-w-6xl">
           <StaggerContainer className="grid md:grid-cols-2 gap-8" staggerDelay={0.15}>
-            {killerContents.map((content, index) => {
+            {killerContents.map((content) => {
               const colors = colorClasses[content.color];
 
               return (
@@ -66,7 +66,7 @@ export function ContentsListContent() {
                       )}
                       whileHover={{ y: -5 }}
                     >
-                      {/* Image */}
+                      {/* Image + D1: subtitle 배지 */}
                       <div className="relative aspect-video overflow-hidden">
                         <Image
                           src={content.image}
@@ -75,6 +75,16 @@ export function ContentsListContent() {
                           className="object-contain p-4 bg-card group-hover:scale-105 transition-transform duration-500"
                           sizes="(max-width: 768px) 100vw, 50vw"
                         />
+                        {/* D1: subtitle pill 배지 */}
+                        <div className="absolute top-3 left-3">
+                          <span className={cn(
+                            "px-3 py-1.5 rounded-full text-xs font-medium backdrop-blur-md",
+                            colors.bg, colors.text,
+                            "border", colors.border
+                          )}>
+                            {content.subtitle}
+                          </span>
+                        </div>
                       </div>
 
                       {/* Content */}
@@ -86,19 +96,19 @@ export function ContentsListContent() {
                           {content.description}
                         </p>
 
-                        {/* Stats */}
+                        {/* D2: Stats with labels */}
                         <div className="flex items-center gap-4 mb-4">
                           <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
                             <Star className={cn("w-4 h-4", colors.text)} />
-                            <span>{content.stats.satisfaction}%</span>
+                            <span>만족 {content.stats.satisfaction}%</span>
                           </div>
                           <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
                             <Share2 className={cn("w-4 h-4", colors.text)} />
-                            <span>{content.stats.shareRate}%</span>
+                            <span>공유 {content.stats.shareRate}%</span>
                           </div>
                           <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
                             <ShoppingCart className={cn("w-4 h-4", colors.text)} />
-                            <span>{content.stats.purchaseIntent}%</span>
+                            <span>구매 {content.stats.purchaseIntent}%</span>
                           </div>
                         </div>
 
