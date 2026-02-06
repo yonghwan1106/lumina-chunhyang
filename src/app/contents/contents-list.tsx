@@ -76,9 +76,9 @@ export function ContentsListContent() {
                           sizes="(max-width: 768px) 100vw, 50vw"
                         />
                         {/* D1: subtitle pill 배지 */}
-                        <div className="absolute top-3 left-3">
+                        <div className="absolute top-2 left-2">
                           <span className={cn(
-                            "px-3 py-1.5 rounded-full text-xs font-medium backdrop-blur-md",
+                            "px-2 py-0.5 rounded-full text-[10px] font-medium backdrop-blur-md",
                             colors.bg, colors.text,
                             "border", colors.border
                           )}>
