@@ -145,7 +145,7 @@ export function RoadmapContent() {
                     {/* Weekly Tasks */}
                     <div className="mb-6">
                       <h4 className="font-semibold text-foreground mb-3">주간 일정</h4>
-                      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 max-h-60 overflow-y-auto">
+                      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
                         {phase.weeklyTasks.map((task) => {
                           const taskStatus = statusConfig[task.status as keyof typeof statusConfig];
                           const TaskIcon = taskStatus.icon;
