@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>루미나 춘향 기획안 v2 (1/2) - 제96회 춘향제 홍보 콘텐츠 기획안</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #1a1a2e;
+            --primary-purple: #4a1c6f;
+            --accent-magenta: #9b2b77;
+            --accent-gold: #d4a855;
+            --accent-cyan: #00d9ff;
+            --text-dark: #2d2d2d;
+            --text-light: #5a5a5a;
+            --bg-cream: #faf8f5;
+            --bg-light: #ffffff;
+            --border-light: #e8e4df;
+            --spring: #ff9eb5;
+            --summer: #4ecdc4;
+            --autumn: #ff8c42;
+            --winter: #a8d8ea;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        @page { size: A4; margin: 20mm; }
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 11pt;
+            line-height: 1.8;
+            color: var(--text-dark);
+            background: var(--bg-cream);
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        .document { max-width: 210mm; margin: 0 auto; background: var(--bg-light); box-shadow: 0 0 30px rgba(0,0,0,0.1); }
+
+        /* 표지 */
+        .cover-page {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-purple) 50%, var(--accent-magenta) 100%);
+            color: white; min-height: 297mm; padding: 40mm 25mm;
+            display: flex; flex-direction: column; justify-content: center;
+            position: relative; page-break-after: always;
+        }
+        .cover-page::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        .cover-badge { display: inline-block; background: var(--accent-gold); color: var(--primary-dark); font-size: 10pt; font-weight: 700; padding: 8px 20px; border-radius: 3px; margin-bottom: 30px; letter-spacing: 2px; }
+        .cover-subtitle { font-family: 'Noto Serif KR', serif; font-size: 14pt; font-weight: 400; color: rgba(255,255,255,0.8); margin-bottom: 15px; letter-spacing: 3px; }
+        .cover-title { font-family: 'Noto Serif KR', serif; font-size: 36pt; font-weight: 900; line-height: 1.3; margin-bottom: 20px; text-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+        .cover-title-en { font-size: 18pt; font-weight: 400; color: var(--accent-cyan); margin-bottom: 40px; font-style: italic; }
+        .cover-tagline { font-size: 13pt; font-weight: 300; color: rgba(255,255,255,0.9); border-left: 3px solid var(--accent-gold); padding-left: 20px; margin-bottom: 60px; }
+        .cover-info { margin-top: auto; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.2); }
+        .cover-info p { font-size: 10pt; color: rgba(255,255,255,0.7); margin-bottom: 5px; }
+        .cover-slogan { font-family: 'Noto Serif KR', serif; font-size: 14pt; color: var(--accent-gold); margin-top: 30px; font-style: italic; }
+
+        /* 본문 페이지 */
+        .content-page { padding: 25mm; background: var(--bg-light); page-break-after: always; }
+        .content-page:last-child { page-break-after: auto; }
+
+        /* 장 제목 */
+        .chapter-header { background: linear-gradient(135deg, var(--primary-dark), var(--primary-purple)); color: white; padding: 20px 30px; margin: -25mm -25mm 30px -25mm; position: relative; }
+        .chapter-number { font-size: 10pt; font-weight: 700; color: var(--accent-gold); letter-spacing: 3px; margin-bottom: 5px; }
+        .chapter-title { font-family: 'Noto Serif KR', serif; font-size: 20pt; font-weight: 700; }
+
+        h2 { font-family: 'Noto Serif KR', serif; font-size: 16pt; font-weight: 700; color: var(--primary-purple); margin: 30px 0 15px 0; padding-bottom: 10px; border-bottom: 2px solid var(--accent-gold); }
+        h3 { font-family: 'Noto Serif KR', serif; font-size: 13pt; font-weight: 600; color: var(--primary-dark); margin: 25px 0 12px 0; }
+        h4 { font-size: 11pt; font-weight: 700; color: var(--accent-magenta); margin: 20px 0 10px 0; }
+        p { margin-bottom: 12px; text-align: justify; }
+        strong { color: var(--primary-purple); font-weight: 600; }
+
+        .highlight-box { background: linear-gradient(135deg, #f8f4ff 0%, #fff8f0 100%); border-left: 4px solid var(--accent-magenta); padding: 20px 25px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .highlight-box.gold { background: linear-gradient(135deg, #fffcf0 0%, #fff8e8 100%); border-left-color: var(--accent-gold); }
+        .highlight-box.cyan { background: linear-gradient(135deg, #f0fcff 0%, #e8f8ff 100%); border-left-color: var(--accent-cyan); }
+
+        .keyword-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 20px 0; }
+        .keyword-item { background: var(--bg-cream); border: 1px solid var(--border-light); padding: 15px; text-align: center; border-radius: 8px; }
+        .keyword-item .icon { font-size: 24pt; margin-bottom: 8px; }
+        .keyword-item .label { font-weight: 700; color: var(--primary-purple); font-size: 12pt; margin-bottom: 5px; }
+        .keyword-item .desc { font-size: 9pt; color: var(--text-light); }
+
+        ul, ol { margin: 15px 0 15px 25px; }
+        li { margin-bottom: 8px; }
+
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 10pt; }
+        th { background: linear-gradient(135deg, var(--primary-dark), var(--primary-purple)); color: white; padding: 12px 15px; text-align: left; font-weight: 600; }
+        td { padding: 12px 15px; border-bottom: 1px solid var(--border-light); }
+        tr:nth-child(even) td { background: var(--bg-cream); }
+        tr:last-child td { border-bottom: 2px solid var(--primary-purple); }
+        .table-highlight { background: #fff8e8 !important; font-weight: 600; }
+
+        .figure { margin: 25px 0; text-align: center; page-break-inside: avoid; }
+        .figure img { max-width: 100%; height: auto; border: 1px solid var(--border-light); border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .figure-caption { font-size: 9pt; color: var(--text-light); margin-top: 10px; font-style: italic; }
+        .figure-title { font-weight: 600; color: var(--primary-purple); font-size: 10pt; margin-top: 10px; }
+
+        .storyline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 20px 0; }
+        .storyline-item { background: linear-gradient(180deg, var(--bg-cream), var(--bg-light)); border: 1px solid var(--border-light); border-radius: 8px; padding: 15px; text-align: center; }
+        .storyline-item.spring { border-top: 4px solid var(--spring); }
+        .storyline-item.summer { border-top: 4px solid var(--summer); }
+        .storyline-item.autumn { border-top: 4px solid var(--autumn); }
+        .storyline-item.winter { border-top: 4px solid var(--winter); }
+        .storyline-season { font-size: 9pt; font-weight: 700; color: var(--text-light); margin-bottom: 5px; }
+        .storyline-title { font-size: 11pt; font-weight: 700; color: var(--primary-dark); margin-bottom: 8px; }
+        .storyline-desc { font-size: 8pt; color: var(--text-light); }
+
+        .content-card { background: var(--bg-light); border: 1px solid var(--border-light); border-radius: 12px; padding: 25px; margin: 20px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .content-card-header { display: flex; align-items: center; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid var(--border-light); }
+        .content-card-number { background: linear-gradient(135deg, var(--primary-purple), var(--accent-magenta)); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14pt; margin-right: 15px; flex-shrink: 0; }
+        .content-card-title { font-family: 'Noto Serif KR', serif; font-size: 14pt; font-weight: 700; color: var(--primary-dark); }
+        .content-card-subtitle { font-size: 10pt; color: var(--text-light); }
+
+        /* 새 스타일: 스펙 그리드 */
+        .spec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 15px 0; }
+        .spec-item { background: var(--bg-cream); border: 1px solid var(--border-light); border-radius: 8px; padding: 12px; }
+        .spec-item .spec-label { font-size: 8pt; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
+        .spec-item .spec-value { font-size: 10pt; font-weight: 600; color: var(--primary-dark); }
+
+        /* 새 스타일: 시간표 */
+        .schedule-row { display: grid; grid-template-columns: 80px 1fr; gap: 15px; padding: 10px 0; border-bottom: 1px solid var(--border-light); }
+        .schedule-row:last-child { border-bottom: none; background: #fff8e8; margin: 0 -15px; padding: 10px 15px; border-radius: 6px; }
+        .schedule-time { font-weight: 700; color: var(--accent-magenta); font-family: monospace; font-size: 12pt; }
+        .schedule-show { color: var(--text-dark); }
+
+        /* 새 스타일: 체험 프로그램 카드 */
+        .experience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 15px 0; }
+        .experience-card { border: 1px solid var(--border-light); border-radius: 8px; padding: 15px; }
+        .experience-card.spring-border { border-top: 3px solid var(--spring); }
+        .experience-card.summer-border { border-top: 3px solid var(--summer); }
+        .experience-card.autumn-border { border-top: 3px solid var(--autumn); }
+        .experience-card.winter-border { border-top: 3px solid var(--winter); }
+        .experience-card h5 { font-size: 10pt; font-weight: 700; color: var(--primary-dark); margin-bottom: 5px; }
+        .experience-card p { font-size: 9pt; color: var(--text-light); margin-bottom: 5px; }
+        .experience-card .highlight-tag { display: inline-block; font-size: 8pt; background: var(--bg-cream); border: 1px solid var(--border-light); padding: 2px 8px; border-radius: 10px; color: var(--accent-magenta); font-weight: 500; }
+
+        /* 새 스타일: 포토가이드 */
+        .photo-guide { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0; }
+        .photo-guide-item { display: flex; align-items: flex-start; gap: 10px; }
+        .photo-guide-icon { font-size: 16pt; flex-shrink: 0; }
+        .photo-guide-label { font-size: 9pt; color: var(--text-light); }
+        .photo-guide-value { font-size: 10pt; font-weight: 600; color: var(--text-dark); }
+        .photo-tips { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0; }
+        .photo-tip { background: #f8f4ff; border: 1px solid rgba(74,28,111,0.2); padding: 4px 12px; border-radius: 20px; font-size: 9pt; color: var(--primary-purple); font-weight: 500; }
+
+        /* 새 스타일: 가격 그리드 */
+        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 15px 0; }
+        .pricing-card { border: 1px solid var(--border-light); border-radius: 10px; padding: 20px; text-align: center; }
+        .pricing-card.featured { border-color: var(--accent-gold); background: linear-gradient(135deg, #fffcf0, #fff8e8); }
+        .pricing-name { font-weight: 700; font-size: 11pt; color: var(--primary-dark); margin-bottom: 5px; }
+        .pricing-price { font-size: 18pt; font-weight: 900; color: var(--primary-purple); margin-bottom: 3px; }
+        .pricing-price span { font-size: 10pt; font-weight: 400; }
+        .pricing-desc { font-size: 9pt; color: var(--text-light); }
+
+        .page-number { text-align: center; font-size: 9pt; color: var(--text-light); margin-top: 30px; padding-top: 15px; border-top: 1px solid var(--border-light); }
+
+        .ai-notice { background: #fff3cd; border: 1px solid #ffc107; border-radius: 8px; padding: 15px 20px; margin: 20px 0; font-size: 10pt; overflow: visible; }
+        .ai-notice-title { font-weight: 700; color: #856404; margin-bottom: 8px; font-size: 11pt; }
+        .ai-notice p { margin-bottom: 0; color: #664d03; font-size: 9.5pt; line-height: 1.7; }
+
+        /* 시나리오 그리드 */
+        .scenario-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 15px 0; }
+        .scenario-card { border: 1px solid var(--border-light); border-radius: 8px; padding: 15px; }
+        .scenario-card .scenario-name { font-weight: 700; color: var(--primary-dark); font-size: 11pt; }
+        .scenario-card .scenario-duration { font-size: 9pt; color: var(--text-light); margin-left: 8px; }
+        .scenario-card .scenario-desc { font-size: 9pt; color: var(--text-light); margin: 5px 0; }
+        .scenario-card .scenario-interactive { font-size: 9pt; color: var(--accent-magenta); font-weight: 500; }
+
+        /* 춘향전 이야기 (Act 카드) */
+        .act-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 20px 0; }
+        .act-card { border-radius: 12px; padding: 20px; border: 1px solid var(--border-light); position: relative; }
+        .act-card.spring-card { border-left: 4px solid var(--spring); background: linear-gradient(135deg, #fff0f3 0%, #fff8fa 100%); }
+        .act-card.summer-card { border-left: 4px solid var(--summer); background: linear-gradient(135deg, #f0faf8 0%, #f8fffe 100%); }
+        .act-card.autumn-card { border-left: 4px solid var(--autumn); background: linear-gradient(135deg, #fff5f0 0%, #fffaf5 100%); }
+        .act-card.winter-card { border-left: 4px solid var(--winter); background: linear-gradient(135deg, #f0f6fa 0%, #f8fcff 100%); }
+        .act-badge { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+        .act-number { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 12pt; }
+        .act-number.spring-num { background: var(--spring); }
+        .act-number.summer-num { background: var(--summer); }
+        .act-number.autumn-num { background: var(--autumn); }
+        .act-number.winter-num { background: var(--winter); }
+        .act-label { font-size: 8pt; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+        .act-label.spring-label { color: var(--spring); }
+        .act-label.summer-label { color: var(--summer); }
+        .act-label.autumn-label { color: var(--autumn); }
+        .act-label.winter-label { color: var(--winter); }
+        .act-card h4 { font-size: 13pt; font-weight: 700; color: var(--primary-dark); margin: 0 0 8px 0; }
+        .act-card p { font-size: 9.5pt; color: var(--text-light); margin-bottom: 0; line-height: 1.7; }
+
+        /* 체험 유형 카드 */
+        .exp-type-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 20px 0; }
+        .exp-type-card { border: 1px solid var(--border-light); border-radius: 12px; padding: 20px; text-align: center; background: var(--bg-cream); }
+        .exp-type-icon { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px auto; font-size: 22pt; }
+        .exp-type-icon.purple { background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.2); }
+        .exp-type-icon.pink { background: rgba(244,114,182,0.1); border: 1px solid rgba(244,114,182,0.2); }
+        .exp-type-icon.teal { background: rgba(45,212,191,0.1); border: 1px solid rgba(45,212,191,0.2); }
+        .exp-type-card h5 { font-size: 12pt; font-weight: 700; margin-bottom: 8px; }
+        .exp-type-card h5.purple-text { color: #8B5CF6; }
+        .exp-type-card h5.pink-text { color: #F472B6; }
+        .exp-type-card h5.teal-text { color: #2DD4BF; }
+        .exp-type-card p { font-size: 9.5pt; color: var(--text-light); margin-bottom: 0; }
+
+        @media print {
+            body { background: white; }
+            .document { box-shadow: none; }
+            .cover-page { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+    <div class="document">
+        <!-- ==================== 표지 ==================== -->
+        <div class="cover-page">
+            <div class="cover-badge">제96회 춘향제 홍보 콘텐츠 & 아이디어 공모전</div>
+            <div class="cover-subtitle">디지털 휴머니티와 야간 관광 트렌드를 결합한 참여형 헤리티지 페스티벌 전략</div>
+            <h1 class="cover-title">루미나 춘향<br>Lumina Chunhyang</h1>
+            <div class="cover-title-en">오작교에 피어나는 빛의 연서</div>
+            <p class="cover-tagline">
+                600년 전통의 춘향전이 2026년 최첨단 미디어아트를 만나<br>
+                남원의 밤을 세계인의 사랑으로 피어나게 하는 확장형 홍보 콘텐츠 및 이벤트 기획
+            </p>
+            <div class="cover-info">
+                <p><strong style="color:white;">응모 부문:</strong> 자유형식 (홍보기획안)</p>
+                <p><strong style="color:white;">제출일:</strong> 2026년 2월</p>
+                <p><strong style="color:white;">구성:</strong> 본 기획안(1/2 + 2/2) + 인포그래픽 10장 + 웹 기획안</p>
+                <p class="cover-slogan">"2026년 봄, 남원의 밤은 당신의 사랑으로 피어납니다."</p>
+            </div>
+        </div>
+
+        <!-- ==================== AI 고지 + Executive Summary ==================== -->
+        <div class="content-page">
+            <div class="ai-notice">
+                <div class="ai-notice-title">생성형 AI 활용 고지</div>
+                <p>본 기획안은 자료 조사, 트렌드 분석, 문서 작성 및 인포그래픽 이미지 생성 과정에서 생성형 AI(Claude, Gemini)를 활용하였습니다. 웹 기획안(lumina-chunhyang.vercel.app)은 Next.js 16 + Framer Motion으로 구현하였으며, AI 코딩 도구(Claude Code)의 지원을 받았습니다.</p>
+            </div>
+
+            <div class="chapter-header">
+                <div class="chapter-number">EXECUTIVE SUMMARY</div>
+                <div class="chapter-title">기획 개요</div>
+            </div>
+
+            <h2>기획 배경 및 목적</h2>
+            <p>대한민국 가장 오래된 전통 축제인 <strong>춘향제</strong>는 2026년 제96회를 맞이하며 중요한 전환점에 서 있습니다. '글로벌 춘향제'로의 도약을 선언하며 인도네시아, 베트남, 일본, 중국, 캐나다 등 5개국으로 참가 대상을 확대한 현 시점에서, 춘향제는 더 이상 지역 축제에 머물지 않고 세계적인 <strong>K-컬처 플랫폼</strong>으로 진화해야 합니다.</p>
+
+            <div class="highlight-box">
+                <strong>핵심 제안:</strong> "루미나 춘향(Lumina Chunhyang): 오작교에 피어나는 빛의 연서"<br>
+                빛과 소리, 터치를 통한 <strong>'감성적 연결'</strong>에 방점을 둔 참여형 야간 헤리티지 콘텐츠.<br><br>
+                <strong>기획안 구성:</strong> 인쇄물 기획안(본 문서) + <strong>인터랙티브 웹 기획안</strong>(lumina-chunhyang.vercel.app)으로 이원화하여, 텍스트와 인포그래픽으로 전략을 설명하는 동시에 애니메이션과 스크롤 인터랙션으로 체험적 이해를 돕습니다.
+            </div>
+
+            <h2>전략적 키워드</h2>
+            <div class="keyword-grid">
+                <div class="keyword-item">
+                    <div class="icon">🔗</div>
+                    <div class="label">연결 Connection</div>
+                    <div class="desc">오작교의 서사를 디지털 연결로 확장</div>
+                </div>
+                <div class="keyword-item">
+                    <div class="icon">🌸</div>
+                    <div class="label">개화 Blooming</div>
+                    <div class="desc">'피어나다 남원'의 시각적 구현</div>
+                </div>
+                <div class="keyword-item">
+                    <div class="icon">⚖️</div>
+                    <div class="label">공존 Coexistence</div>
+                    <div class="desc">문화유산과 첨단 기술의 조화</div>
+                </div>
+            </div>
+
+            <div class="figure">
+                <img src="01_전략프레임워크_개요.png" alt="전략 프레임워크 개요">
+                <div class="figure-title">[인포그래픽 1] 제96회 춘향제 전략 프레임워크</div>
+                <div class="figure-caption">배경 분석 → 트렌드 대응 → 핵심 전략 → 실행 방안 → 최종 목표의 논리적 흐름</div>
+            </div>
+        </div>
+
+        <!-- ==================== Chapter 01: 트렌드 분석 ==================== -->
+        <div class="content-page">
+            <div class="chapter-header">
+                <div class="chapter-number">CHAPTER 01</div>
+                <div class="chapter-title">2026년 관광 트렌드 및 환경 분석</div>
+            </div>
+
+            <h2>1.1 핵심 트렌드: 이원성(Dualism)과 디지털 휴머니티</h2>
+            <p>한국관광공사(KTO)는 2026년 관광 시장을 관통할 핵심 키워드로 <strong>'이원성(Dualism)'</strong>을 제시하였습니다. 이는 여행자들이 상반된 가치의 공존을 추구하는 현상을 의미합니다.</p>
+            <ul>
+                <li>럭셔리한 휴식과 가성비 높은 소비의 동시 추구</li>
+                <li>최첨단 기술(High-Tech)을 통한 인간적인 감성(High-Touch) 경험</li>
+                <li>AI 기반 '여행 비서'가 감성을 읽고 개인화된 경험 제공</li>
+            </ul>
+
+            <h2>1.2 야간 관광(Noctourism)의 급부상</h2>
+            <p>기후 변화와 라이프스타일 변화로 <strong>'야간 관광(Noctourism)'</strong>이 글로벌 메가 트렌드로 자리 잡았습니다. 여행자들은 밤에만 가능한 특별한 체험—별 관측, 야간 생태 탐험, 라이트 페스티벌—을 찾고 있습니다.</p>
+
+            <div class="highlight-box gold">
+                <strong>시사점:</strong> 남원의 광한루원을 대한민국 대표 '헤리티지 나이트 투어' 명소로 브랜딩해야 합니다. 시드니의 'Vivid Sydney', 리옹의 'Fête des Lumières'처럼 빛을 활용한 인터랙티브 콘텐츠는 야간 체류 시간과 지역 경제 활성화에 검증된 솔루션입니다.
+            </div>
+
+            <div class="figure">
+                <img src="02_2026관광트렌드_대응솔루션.png" alt="2026 관광 트렌드 대응 솔루션">
+                <div class="figure-title">[인포그래픽 2] 2026 관광 트렌드와 루미나 춘향의 대응 솔루션</div>
+                <div class="figure-caption">이원성, 야간관광, 디지털 휴머니티 트렌드와 본 기획안의 매칭</div>
+            </div>
+        </div>
+
+        <!-- ==================== Chapter 02: 콘셉트 & 스토리텔링 ==================== -->
+        <div class="content-page">
+            <div class="chapter-header">
+                <div class="chapter-number">CHAPTER 02</div>
+                <div class="chapter-title">핵심 콘셉트 및 스토리텔링 전략</div>
+            </div>
+
+            <h2>2.1 콘셉트: 루미나 춘향(Lumina Chunhyang)</h2>
+            <p><strong>'루미나(Lumina)'</strong>는 빛(Light)과 라틴어 접미사를 합성한 조어로, 춘향의 사랑이 빛이 되어 세상을 밝힌다는 의미를 내포합니다. 이는 남원시의 도시 브랜드 슬로건인 <strong>"피어나다, 남원"</strong>과 직접적으로 연결됩니다.</p>
+
+            <div class="highlight-box">
+                사랑이라는 추상적 감정을 <strong>'빛'</strong>과 <strong>'꽃'</strong>이라는 시각적 메타포로 구체화하여,<br>
+                춘향제가 열리는 남원의 밤을 거대한 <strong>빛의 정원</strong>으로 변모시킵니다.
+            </div>
+
+            <h2>2.2 스토리텔링 구조: 사계절의 사랑</h2>
+            <p>전체 프로그램은 춘향전의 서사를 사계절의 순환에 빗대어 <strong>4단계의 공간적 체험</strong>으로 구성합니다. 각 계절 구역은 광한루원 내 별도 영역에서 동시 운영되며, 방문객은 순서대로 혹은 자유롭게 이동하며 춘향전의 서사를 온몸으로 체험합니다.</p>
+
+            <div class="storyline">
+                <div class="storyline-item spring">
+                    <div class="storyline-season">🌸 봄 SPRING</div>
+                    <div class="storyline-title">만남</div>
+                    <div class="storyline-desc">광한루원 동문 입구<br>· 춘향관 구역</div>
+                </div>
+                <div class="storyline-item summer">
+                    <div class="storyline-season">☀️ 여름 SUMMER</div>
+                    <div class="storyline-title">열정</div>
+                    <div class="storyline-desc">오작교<br>· 연못 동쪽 구역</div>
+                </div>
+                <div class="storyline-item autumn">
+                    <div class="storyline-season">🍂 가을 AUTUMN</div>
+                    <div class="storyline-title">이별과 인내</div>
+                    <div class="storyline-desc">광한루원 산책로<br>· 춘향사당 구역</div>
+                </div>
+                <div class="storyline-item winter">
+                    <div class="storyline-season">❄️ 겨울 WINTER</div>
+                    <div class="storyline-title">재회</div>
+                    <div class="storyline-desc">광한루원 중앙로<br>· 춘향테마파크 구역</div>
+                </div>
+            </div>
+
+            <h2>2.3 춘향전 이야기 — 4막의 서사</h2>
+            <p>춘향전의 핵심 서사를 <strong>4막(Act) 구조</strong>로 재구성하여, 각 계절 구역의 체험 콘텐츠와 유기적으로 연결합니다. 방문객은 단순한 축제 관람이 아닌, <strong>춘향과 몽룡의 사랑 이야기 속 주인공</strong>이 되어 감정의 흐름을 체험합니다.</p>
+
+            <div class="act-grid">
+                <div class="act-card spring-card">
+                    <div class="act-badge">
+                        <div class="act-number spring-num">1</div>
+                        <span class="act-label spring-label">Act 1 · 봄</span>
+                    </div>
+                    <h4>🌸 배경 — 만남</h4>
+                    <p>조선 시대 전라도 남원. 퇴기 월매의 딸 춘향과 남원 부사의 아들 이몽룡은 광한루에서 우연히 만나 첫눈에 사랑에 빠집니다. 신분의 차이에도 불구하고 두 사람은 영원한 사랑을 맹세합니다.</p>
+                </div>
+                <div class="act-card summer-card">
+                    <div class="act-badge">
+                        <div class="act-number summer-num">2</div>
+                        <span class="act-label summer-label">Act 2 · 여름</span>
+                    </div>
+                    <h4>☀️ 시련 — 이별</h4>
+                    <p>몽룡이 과거를 보러 한양으로 떠난 후, 새로 부임한 변학도가 춘향에게 수청을 강요합니다. 춘향은 몽룡에 대한 정절을 지키며 거절하고, 옥에 갇히게 됩니다.</p>
+                </div>
+                <div class="act-card autumn-card">
+                    <div class="act-badge">
+                        <div class="act-number autumn-num">3</div>
+                        <span class="act-label autumn-label">Act 3 · 가을</span>
+                    </div>
+                    <h4>🍂 기다림 — 인내</h4>
+                    <p>옥에 갇힌 춘향은 죽음을 앞두고도 몽룡을 향한 사랑을 포기하지 않습니다. 한편 한양에서 과거에 급제한 몽룡은 암행어사가 되어 남원으로 향합니다.</p>
+                </div>
+                <div class="act-card winter-card">
+                    <div class="act-badge">
+                        <div class="act-number winter-num">4</div>
+                        <span class="act-label winter-label">Act 4 · 겨울</span>
+                    </div>
+                    <h4>❄️ 재회 — 영원한 사랑</h4>
+                    <p>변학도의 생일 잔치 날, 암행어사 출두로 악행이 드러나고 춘향은 구출됩니다. 마침내 재회한 두 사람은 영원한 사랑을 이루며, 이들의 이야기는 불멸의 사랑의 상징이 됩니다.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box gold">
+                <strong>스토리텔링 설계 원칙:</strong> 각 계절 구역은 해당 Act의 감정선을 물리적 공간으로 구현합니다. 봄 구역의 설렘, 여름 구역의 열정, 가을 구역의 그리움, 겨울 구역의 감동이 빛·소리·인터랙션으로 체현되어 방문객은 "읽는 춘향전이 아닌, 걷는 춘향전"을 경험합니다.
+            </div>
+
+            <h2>2.4 체험 유형</h2>
+            <p>각 계절 구역에서 제공되는 체험 프로그램은 <strong>3가지 유형</strong>으로 분류되며, 다양한 연령대와 취향을 아우릅니다.</p>
+
+            <div class="exp-type-grid">
+                <div class="exp-type-card">
+                    <div class="exp-type-icon purple">📱</div>
+                    <h5 class="purple-text">인터랙티브 체험</h5>
+                    <p>터치, 움직임, 소리에 반응하는 첨단 기술로 스토리 속 주인공이 되어보세요. 스마트 합죽선, 오작교 레조넌스 등.</p>
+                </div>
+                <div class="exp-type-card">
+                    <div class="exp-type-icon pink">🖥️</div>
+                    <h5 class="pink-text">미디어 아트</h5>
+                    <p>광한루와 오작교를 캔버스로 한 대형 프로젝션 매핑과 LED 연출을 감상하세요. 개화하는 누각 미디어 파사드.</p>
+                </div>
+                <div class="exp-type-card">
+                    <div class="exp-type-icon teal">✨</div>
+                    <h5 class="teal-text">몰입형 공연</h5>
+                    <p>배우들의 라이브 퍼포먼스와 관객 참여형 연극으로 감동을 느껴보세요. 글로벌 러브 시그널 드론 쇼.</p>
+                </div>
+            </div>
+
+            <h2>2.5 계절별 체험 프로그램 상세</h2>
+
+            <h4>🌸 봄 — 만남의 봄 (광한루원 동문 · 춘향관)</h4>
+            <p>운영: 4/15~5/15 | 메인 쇼 19:00 / 20:30 / 22:00 (약 20분)</p>
+            <div class="experience-grid">
+                <div class="experience-card spring-border">
+                    <h5>그네 체험존</h5>
+                    <p>춘향이 그네를 탔던 순간을 재현하는 인터랙티브 그네 설치물</p>
+                    <span class="highlight-tag">LED가 움직임에 반응하여 벚꽃 효과</span>
+                </div>
+                <div class="experience-card spring-border">
+                    <h5>첫 만남 프로젝션</h5>
+                    <p>광한루 누각에 펼쳐지는 첫 만남 스토리 미디어아트</p>
+                    <span class="highlight-tag">15분 간격 상영, 관람객 참여형</span>
+                </div>
+                <div class="experience-card spring-border">
+                    <h5>봄날의 편지</h5>
+                    <p>디지털 편지를 작성하면 벚꽃 꽃잎에 투사되는 체험</p>
+                    <span class="highlight-tag">QR코드로 영구 보관 가능</span>
+                </div>
+            </div>
+
+            <h4>☀️ 여름 — 사랑의 여름 (오작교 · 연못 동쪽)</h4>
+            <p>운영: 4/15~5/15 | 메인 쇼 20:00 / 21:30 / 23:00 (약 25분)</p>
+            <div class="experience-grid">
+                <div class="experience-card summer-border">
+                    <h5>오작교 레조넌스</h5>
+                    <p>커플이 함께 걸으면 빛과 소리가 공명하는 체험</p>
+                    <span class="highlight-tag">발걸음에 따라 은하수 물결 효과</span>
+                </div>
+                <div class="experience-card summer-border">
+                    <h5>별빛 맹세</h5>
+                    <p>사랑의 메시지를 하늘에 투사하는 인터랙티브 설치</p>
+                    <span class="highlight-tag">전 세계 참여자 메시지 실시간 표시</span>
+                </div>
+                <div class="experience-card summer-border">
+                    <h5>은하수 보트</h5>
+                    <p>LED 조명으로 꾸며진 배를 타고 연못을 유람</p>
+                    <span class="highlight-tag">수면에 반사되는 별빛 연출</span>
+                </div>
+            </div>
+
+            <h4>🍂 가을 — 이별의 가을 (산책로 · 춘향사당)</h4>
+            <p>운영: 4/15~5/15 | 메인 쇼 18:30 / 20:00 / 21:30 (약 20분)</p>
+            <div class="experience-grid">
+                <div class="experience-card autumn-border">
+                    <h5>그리움의 길</h5>
+                    <p>단풍 터널을 걸으며 이별의 감정을 체험</p>
+                    <span class="highlight-tag">낙엽이 떨어지는 LED 연출 산책</span>
+                </div>
+                <div class="experience-card autumn-border">
+                    <h5>춘향의 편지</h5>
+                    <p>춘향이 몽룡에게 보내는 편지를 재현한 체험</p>
+                    <span class="highlight-tag">직접 편지를 쓰고 나무에 거는 체험</span>
+                </div>
+                <div class="experience-card autumn-border">
+                    <h5>기다림의 누각</h5>
+                    <p>광한루에서 바라보는 가을 야경 감상</p>
+                    <span class="highlight-tag">춘향의 독백 오디오 가이드</span>
+                </div>
+            </div>
+
+            <h4>❄️ 겨울 — 재회의 겨울 (중앙로 · 테마파크)</h4>
+            <p>운영: 4/15~5/15 | 메인 쇼 18:00 / 19:30 / 21:00 (약 30분) | 드론쇼: 매주 토 21:00</p>
+            <div class="experience-grid">
+                <div class="experience-card winter-border">
+                    <h5>재회의 순간</h5>
+                    <p>눈 내리는 특수효과와 함께 펼쳐지는 재회 스토리</p>
+                    <span class="highlight-tag">인공 눈 + 홀로그램 감동 연출</span>
+                </div>
+                <div class="experience-card winter-border">
+                    <h5>영원의 맹세</h5>
+                    <p>커플이 함께 영원한 사랑을 맹세하는 체험</p>
+                    <span class="highlight-tag">맹세를 새긴 디지털 증서 발급</span>
+                </div>
+                <div class="experience-card winter-border">
+                    <h5>드론 피날레 쇼</h5>
+                    <p>500대 드론이 펼치는 사랑 이야기의 대미</p>
+                    <span class="highlight-tag">글로벌 러브 시그널 연계</span>
+                </div>
+            </div>
+
+            <div class="figure">
+                <img src="03_사계절사랑_스토리텔링여정.png" alt="사계절 사랑 스토리텔링 여정">
+                <div class="figure-title">[인포그래픽 3] '사계절의 사랑' 스토리텔링 여정 지도</div>
+                <div class="figure-caption">봄(동문 입구) → 여름(오작교) → 가을(산책로) → 겨울(중앙로)의 방문객 동선 및 12개 체험 프로그램</div>
+            </div>
+        </div>
+
+        <!-- ==================== Chapter 03: 킬러콘텐츠 1 & 2 ==================== -->
+        <div class="content-page">
+            <div class="chapter-header">
+                <div class="chapter-number">CHAPTER 03</div>
+                <div class="chapter-title">4대 킬러 콘텐츠 실행 계획</div>
+            </div>
+
+            <p>4대 킬러 콘텐츠는 각각의 계절 구역에서 핵심 경험을 제공하며, 사전 조사 결과 <strong>평균 만족도 96.3%, 평균 SNS 공유율 88.5%</strong>의 기대효과를 보이고 있습니다.</p>
+
+            <!-- ===== 킬러 콘텐츠 1: 스마트 합죽선 ===== -->
+            <div class="content-card">
+                <div class="content-card-header">
+                    <div class="content-card-number">1</div>
+                    <div>
+                        <div class="content-card-title">스마트 합죽선 Smart Hapjukseon</div>
+                        <div class="content-card-subtitle">IoT 기반 전통 공예품 재해석 | 만족도 94% · 공유율 78% · 구매의향 85%</div>
+                    </div>
+                </div>
+                <p>남원의 전통 공예품인 부채(합죽선)를 IoT 디바이스로 재해석합니다. 부채질에 따라 빛 패턴이 변화하고, 축제장 곳곳에서 AR 콘텐츠를 활성화하는 인터랙티브 기념품입니다.</p>
+
+                <h4>제품 사양</h4>
+                <div class="spec-grid">
+                    <div class="spec-item">
+                        <div class="spec-label">크기</div>
+                        <div class="spec-value">28cm × 42cm (펼침 시)</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">무게</div>
+                        <div class="spec-value">180g</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">배터리</div>
+                        <div class="spec-value">USB-C 충전, 8시간 사용</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">LED</div>
+                        <div class="spec-value">RGB LED 24개</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">센서</div>
+                        <div class="spec-value">3축 가속도 센서</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">연결</div>
+                        <div class="spec-value">Bluetooth 5.0, NFC</div>
+                    </div>
+                </div>
+
+                <h4>AR 기능</h4>
+                <ul>
+                    <li><strong>춘향 홀로그램:</strong> 합죽선을 펼치면 춘향 캐릭터가 등장</li>
+                    <li><strong>스토리 언락:</strong> 축제장 5곳에서 스캔하면 비밀 스토리 해금</li>
+                    <li><strong>포토 프레임:</strong> AR 배경으로 사진 촬영 가능</li>
+                    <li><strong>빛 동기화:</strong> 메인 공연 시 관객 합죽선 일제히 연동</li>
+                </ul>
+
+                <h4>가격 정보</h4>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <div class="pricing-name">스탠다드</div>
+                        <div class="pricing-price">35,000<span>원</span></div>
+                        <div class="pricing-desc">기본 LED 패턴</div>
+                    </div>
+                    <div class="pricing-card">
+                        <div class="pricing-name">프리미엄</div>
+                        <div class="pricing-price">55,000<span>원</span></div>
+                        <div class="pricing-desc">AR 기능 포함</div>
+                    </div>
+                    <div class="pricing-card featured">
+                        <div class="pricing-name">VIP</div>
+                        <div class="pricing-price">85,000<span>원</span></div>
+                        <div class="pricing-desc">골드 도금 + 개인 각인</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="figure">
+                <img src="04_스마트합죽선_작동원리.png" alt="스마트 합죽선 작동 원리">
+                <div class="figure-title">[인포그래픽 4] 스마트 합죽선 기술 구조도</div>
+                <div class="figure-caption">전통 외형 속 내장된 IoT 기술 분해도 및 AR 연동 시나리오</div>
+            </div>
+
+            <!-- ===== 킬러 콘텐츠 2: 개화하는 누각 ===== -->
+            <div class="content-card">
+                <div class="content-card-header">
+                    <div class="content-card-number">2</div>
+                    <div>
+                        <div class="content-card-title">개화하는 누각 The Blooming Pavilion</div>
+                        <div class="content-card-subtitle">문화재 보호형 미디어 파사드 | 만족도 97% · 공유율 89% · 구매의향 72%</div>
+                    </div>
+                </div>
+                <p>국가지정문화재인 광한루(보물 제281호)를 스크린으로 활용하는 미디어 파사드 쇼입니다. 춘향전의 사랑 이야기가 건물 전체에 펼쳐지며, 관람객 참여로 꽃이 피어나는 인터랙티브 연출이 특징입니다.</p>
+
+                <h4>기술 사양</h4>
+                <div class="spec-grid">
+                    <div class="spec-item">
+                        <div class="spec-label">프로젝터</div>
+                        <div class="spec-value">20,000루멘 레이저 6대</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">해상도</div>
+                        <div class="spec-value">8K (합성)</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">투사 면적</div>
+                        <div class="spec-value">광한루 전면+측면 약 800㎡</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">오디오</div>
+                        <div class="spec-value">7.1 서라운드 사운드</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">소프트웨어</div>
+                        <div class="spec-value">TouchDesigner + 커스텀</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">공법</div>
+                        <div class="spec-value">무설치(No-Nailing) 방식</div>
+                    </div>
+                </div>
+
+                <h4>공연 시나리오 (4편 + 축약 버전)</h4>
+                <div class="scenario-grid">
+                    <div class="scenario-card" style="border-left: 3px solid var(--spring);">
+                        <span class="scenario-name">만남의 봄</span><span class="scenario-duration">15분</span>
+                        <p class="scenario-desc">벚꽃이 피어나며 춘향과 몽룡의 첫 만남을 재현</p>
+                        <div class="scenario-interactive">⚡ 관객 스마트폰으로 꽃잎 날리기 참여</div>
+                    </div>
+                    <div class="scenario-card" style="border-left: 3px solid var(--summer);">
+                        <span class="scenario-name">사랑의 여름</span><span class="scenario-duration">15분</span>
+                        <p class="scenario-desc">은하수와 별빛으로 두 사람의 사랑을 표현</p>
+                        <div class="scenario-interactive">⚡ 하트 모양 라이트로 참여</div>
+                    </div>
+                    <div class="scenario-card" style="border-left: 3px solid var(--autumn);">
+                        <span class="scenario-name">이별의 가을</span><span class="scenario-duration">12분</span>
+                        <p class="scenario-desc">낙엽이 흩날리며 이별의 아픔을 담은 연출</p>
+                        <div class="scenario-interactive">⚡ 함께 부르는 사랑가</div>
+                    </div>
+                    <div class="scenario-card" style="border-left: 3px solid var(--winter);">
+                        <span class="scenario-name">재회의 겨울</span><span class="scenario-duration">18분</span>
+                        <p class="scenario-desc">눈꽃과 함께 감동적인 재회 스토리</p>
+                        <div class="scenario-interactive">⚡ 관객 전체 빛 동기화 피날레</div>
+                    </div>
+                </div>
+
+                <h4>공연 시간표</h4>
+                <div style="background: var(--bg-cream); border-radius: 8px; padding: 15px; margin: 15px 0;">
+                    <div class="schedule-row">
+                        <div class="schedule-time">19:30</div>
+                        <div class="schedule-show">만남의 봄</div>
+                    </div>
+                    <div class="schedule-row">
+                        <div class="schedule-time">20:00</div>
+                        <div class="schedule-show">사랑의 여름</div>
+                    </div>
+                    <div class="schedule-row">
+                        <div class="schedule-time">20:45</div>
+                        <div class="schedule-show">이별의 가을</div>
+                    </div>
+                    <div class="schedule-row">
+                        <div class="schedule-time">21:15</div>
+                        <div class="schedule-show">재회의 겨울</div>
+                    </div>
+                    <div class="schedule-row">
+                        <div class="schedule-time">22:00</div>
+                        <div class="schedule-show">종합 버전 (축약) ⭐</div>
+                    </div>
+                </div>
+
+                <h4>촬영 가이드</h4>
+                <div class="photo-guide">
+                    <div class="photo-guide-item">
+                        <div class="photo-guide-icon">📍</div>
+                        <div>
+                            <div class="photo-guide-label">베스트 촬영 포인트</div>
+                            <div class="photo-guide-value">광한루 정면 50m 지점</div>
+                        </div>
+                    </div>
+                    <div class="photo-guide-item">
+                        <div class="photo-guide-icon">🕘</div>
+                        <div>
+                            <div class="photo-guide-label">최적 촬영 시간</div>
+                            <div class="photo-guide-value">21:15 재회의 겨울 피날레</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="photo-tips">
+                    <span class="photo-tip">📷 삼각대 권장</span>
+                    <span class="photo-tip">📷 ISO 1600 이상</span>
+                    <span class="photo-tip">📷 셔터 스피드 1/60</span>
+                </div>
+            </div>
+
+            <div class="figure">
+                <img src="05_개화하는누각_미디어파사드.png" alt="개화하는 누각 미디어 파사드">
+                <div class="figure-title">[인포그래픽 5] 무설치 미디어 파사드 구현 다이어그램</div>
+                <div class="figure-caption">문화재 보호와 생성형 AI 연동 기술 흐름 및 4편 시나리오 구성</div>
+            </div>
+
+            <div class="page-number">— 1/2 끝 · 2/2에서 계속 —</div>
+        </div>
+    </div>
+</body>
+</html>

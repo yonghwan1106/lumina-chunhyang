@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>루미나 춘향 기획안 v2 (2/2) - 제96회 춘향제 홍보 콘텐츠 기획안</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #1a1a2e;
+            --primary-purple: #4a1c6f;
+            --accent-magenta: #9b2b77;
+            --accent-gold: #d4a855;
+            --accent-cyan: #00d9ff;
+            --text-dark: #2d2d2d;
+            --text-light: #5a5a5a;
+            --bg-cream: #faf8f5;
+            --bg-light: #ffffff;
+            --border-light: #e8e4df;
+            --spring: #ff9eb5;
+            --summer: #4ecdc4;
+            --autumn: #ff8c42;
+            --winter: #a8d8ea;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        @page { size: A4; margin: 20mm; }
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 11pt;
+            line-height: 1.8;
+            color: var(--text-dark);
+            background: var(--bg-cream);
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        .document { max-width: 210mm; margin: 0 auto; background: var(--bg-light); box-shadow: 0 0 30px rgba(0,0,0,0.1); }
+        .content-page { padding: 25mm; background: var(--bg-light); page-break-after: always; }
+        .content-page:last-child { page-break-after: auto; }
+        .chapter-header { background: linear-gradient(135deg, var(--primary-dark), var(--primary-purple)); color: white; padding: 20px 30px; margin: -25mm -25mm 30px -25mm; position: relative; }
+        .chapter-number { font-size: 10pt; font-weight: 700; color: var(--accent-gold); letter-spacing: 3px; margin-bottom: 5px; }
+        .chapter-title { font-family: 'Noto Serif KR', serif; font-size: 20pt; font-weight: 700; }
+        h2 { font-family: 'Noto Serif KR', serif; font-size: 16pt; font-weight: 700; color: var(--primary-purple); margin: 30px 0 15px 0; padding-bottom: 10px; border-bottom: 2px solid var(--accent-gold); }
+        h3 { font-family: 'Noto Serif KR', serif; font-size: 13pt; font-weight: 600; color: var(--primary-dark); margin: 25px 0 12px 0; }
+        h4 { font-size: 11pt; font-weight: 700; color: var(--accent-magenta); margin: 20px 0 10px 0; }
+        p { margin-bottom: 12px; text-align: justify; }
+        strong { color: var(--primary-purple); font-weight: 600; }
+        .highlight-box { background: linear-gradient(135deg, #f8f4ff 0%, #fff8f0 100%); border-left: 4px solid var(--accent-magenta); padding: 20px 25px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .highlight-box.gold { background: linear-gradient(135deg, #fffcf0 0%, #fff8e8 100%); border-left-color: var(--accent-gold); }
+        .highlight-box.cyan { background: linear-gradient(135deg, #f0fcff 0%, #e8f8ff 100%); border-left-color: var(--accent-cyan); }
+        .keyword-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 20px 0; }
+        .keyword-item { background: var(--bg-cream); border: 1px solid var(--border-light); padding: 15px; text-align: center; border-radius: 8px; }
+        .keyword-item .icon { font-size: 24pt; margin-bottom: 8px; }
+        .keyword-item .label { font-weight: 700; color: var(--primary-purple); font-size: 12pt; margin-bottom: 5px; }
+        .keyword-item .desc { font-size: 9pt; color: var(--text-light); }
+        ul, ol { margin: 15px 0 15px 25px; }
+        li { margin-bottom: 8px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 10pt; }
+        th { background: linear-gradient(135deg, var(--primary-dark), var(--primary-purple)); color: white; padding: 12px 15px; text-align: left; font-weight: 600; }
+        td { padding: 12px 15px; border-bottom: 1px solid var(--border-light); }
+        tr:nth-child(even) td { background: var(--bg-cream); }
+        tr:last-child td { border-bottom: 2px solid var(--primary-purple); }
+        .table-highlight { background: #fff8e8 !important; font-weight: 600; }
+        .figure { margin: 25px 0; text-align: center; page-break-inside: avoid; }
+        .figure img { max-width: 100%; height: auto; border: 1px solid var(--border-light); border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .figure-caption { font-size: 9pt; color: var(--text-light); margin-top: 10px; font-style: italic; }
+        .figure-title { font-weight: 600; color: var(--primary-purple); font-size: 10pt; margin-top: 10px; }
+        .content-card { background: var(--bg-light); border: 1px solid var(--border-light); border-radius: 12px; padding: 25px; margin: 20px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .content-card-header { display: flex; align-items: center; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid var(--border-light); }
+        .content-card-number { background: linear-gradient(135deg, var(--primary-purple), var(--accent-magenta)); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14pt; margin-right: 15px; flex-shrink: 0; }
+        .content-card-title { font-family: 'Noto Serif KR', serif; font-size: 14pt; font-weight: 700; color: var(--primary-dark); }
+        .content-card-subtitle { font-size: 10pt; color: var(--text-light); }
+        .spec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 15px 0; }
+        .spec-item { background: var(--bg-cream); border: 1px solid var(--border-light); border-radius: 8px; padding: 12px; }
+        .spec-item .spec-label { font-size: 8pt; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
+        .spec-item .spec-value { font-size: 10pt; font-weight: 600; color: var(--primary-dark); }
+        .references { font-size: 9pt; color: var(--text-light); margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-light); }
+        .references h3 { font-size: 11pt; color: var(--text-dark); }
+        .references ol { margin-left: 20px; }
+        .references li { margin-bottom: 5px; }
+        .page-number { text-align: center; font-size: 9pt; color: var(--text-light); margin-top: 30px; padding-top: 15px; border-top: 1px solid var(--border-light); }
+
+        /* 체험 플로우 */
+        .flow-steps { margin: 15px 0; }
+        .flow-step { display: flex; gap: 15px; margin-bottom: 12px; }
+        .flow-step-number { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, var(--primary-purple), var(--accent-magenta)); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12pt; flex-shrink: 0; }
+        .flow-step-content h5 { font-size: 10pt; font-weight: 700; color: var(--primary-dark); margin-bottom: 2px; }
+        .flow-step-content p { font-size: 9pt; color: var(--text-light); margin-bottom: 0; }
+
+        /* 빛 효과 카드 */
+        .effect-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 15px 0; }
+        .effect-card { background: linear-gradient(135deg, #f0fcff, #f8f4ff); border: 1px solid var(--border-light); border-radius: 8px; padding: 15px; }
+        .effect-card .effect-name { font-weight: 700; color: var(--accent-magenta); font-size: 11pt; margin-bottom: 3px; }
+        .effect-card .effect-trigger { font-size: 9pt; color: var(--text-light); margin-bottom: 5px; }
+        .effect-card .effect-desc { font-size: 9pt; color: var(--text-dark); }
+
+        /* 예약/참여 카드 */
+        .info-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 15px 0; }
+        .info-card { background: var(--bg-cream); border: 1px solid var(--border-light); border-radius: 8px; padding: 15px; text-align: center; }
+        .info-card .info-icon { font-size: 20pt; margin-bottom: 5px; }
+        .info-card .info-label { font-size: 8pt; color: var(--text-light); margin-bottom: 3px; }
+        .info-card .info-value { font-size: 10pt; font-weight: 700; color: var(--primary-dark); }
+
+        .participation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0; }
+        .participation-card { border: 1px solid var(--border-light); border-radius: 10px; padding: 20px; }
+        .participation-card h5 { font-size: 11pt; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .participation-card .p-row { display: flex; gap: 10px; margin-bottom: 8px; font-size: 9pt; }
+        .participation-card .p-label { color: var(--text-light); min-width: 55px; }
+        .participation-card .p-value { color: var(--text-dark); font-weight: 500; }
+
+        .platform-pills { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0; }
+        .platform-pill { background: linear-gradient(135deg, #fffcf0, #fff8e8); border: 1px solid var(--accent-gold); padding: 5px 14px; border-radius: 20px; font-size: 9pt; font-weight: 600; color: var(--primary-dark); }
+        .lang-pill { background: var(--bg-cream); border: 1px solid var(--border-light); padding: 3px 10px; border-radius: 15px; font-size: 8pt; color: var(--text-dark); }
+
+        /* TIP 배너 */
+        .tip-banner { display: flex; align-items: center; gap: 12px; padding: 12px 18px; border: 1px solid var(--border-light); border-radius: 8px; margin: 15px 0; }
+        .tip-badge { background: var(--accent-magenta); color: white; padding: 3px 10px; border-radius: 4px; font-size: 9pt; font-weight: 700; flex-shrink: 0; }
+        .tip-text { font-size: 10pt; color: var(--text-dark); }
+
+        /* 웹 플랫폼 섹션 */
+        .web-feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 20px 0; }
+        .web-feature { border: 1px solid var(--border-light); border-radius: 10px; padding: 20px; }
+        .web-feature h5 { font-size: 11pt; font-weight: 700; color: var(--primary-dark); margin-bottom: 8px; }
+        .web-feature p { font-size: 9pt; color: var(--text-light); margin-bottom: 0; }
+        .web-feature .web-tag { display: inline-block; background: #f8f4ff; border: 1px solid rgba(74,28,111,0.15); padding: 2px 8px; border-radius: 4px; font-size: 8pt; color: var(--primary-purple); font-weight: 500; margin-top: 8px; }
+
+        @media print {
+            body { background: white; }
+            .document { box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="document">
+        <!-- ==================== 킬러 콘텐츠 3 & 4 (계속) ==================== -->
+        <div class="content-page">
+            <div class="chapter-header">
+                <div class="chapter-number">CHAPTER 03 (계속)</div>
+                <div class="chapter-title">4대 킬러 콘텐츠 실행 계획</div>
+            </div>
+
+            <!-- ===== 킬러 콘텐츠 3: 오작교 레조넌스 ===== -->
+            <div class="content-card">
+                <div class="content-card-header">
+                    <div class="content-card-number">3</div>
+                    <div>
+                        <div class="content-card-title">오작교 레조넌스 Ojakgyo Resonance</div>
+                        <div class="content-card-subtitle">연결의 의식으로 승화된 체험형 설치 미술 | 만족도 96% · 공유율 92% · 구매의향 68%</div>
+                    </div>
+                </div>
+                <p>오작교 다리 위에서 두 사람이 함께 걸으면 빛과 소리가 공명하는 체험형 설치 작품입니다. 커플의 발걸음에 따라 빛의 물결이 퍼져나가며, 오작교를 건너는 행위를 <strong>'연결의 의식'</strong>으로 승화시킵니다.</p>
+
+                <h4>기술 사양</h4>
+                <div class="spec-grid">
+                    <div class="spec-item">
+                        <div class="spec-label">다리 길이</div>
+                        <div class="spec-value">25m</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">센서</div>
+                        <div class="spec-value">압력 센서 500개</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">LED</div>
+                        <div class="spec-value">RGB 스트립 2,000m</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">음향</div>
+                        <div class="spec-value">공간 음향 16채널</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">카메라</div>
+                        <div class="spec-value">자동 촬영 4대</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">인식</div>
+                        <div class="spec-value">커플 인터랙션 인식</div>
+                    </div>
+                </div>
+
+                <h4>체험 순서 (5단계)</h4>
+                <div class="flow-steps">
+                    <div class="flow-step">
+                        <div class="flow-step-number">1</div>
+                        <div class="flow-step-content">
+                            <h5>입장</h5>
+                            <p>오작교 입구에서 커플 등록 (앱 또는 현장)</p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-step-number">2</div>
+                        <div class="flow-step-content">
+                            <h5>동기화</h5>
+                            <p>두 사람의 발걸음이 감지되면 빛이 반응 시작</p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-step-number">3</div>
+                        <div class="flow-step-content">
+                            <h5>공명</h5>
+                            <p>함께 걸을수록 빛과 소리가 풍성해짐</p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-step-number">4</div>
+                        <div class="flow-step-content">
+                            <h5>클라이맥스</h5>
+                            <p>다리 중앙에서 빛의 폭발과 함께 자동 촬영</p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-step-number">5</div>
+                        <div class="flow-step-content">
+                            <h5>완주</h5>
+                            <p>출구에서 QR코드로 사진 수령</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h4>빛 효과 (4종)</h4>
+                <div class="effect-grid">
+                    <div class="effect-card">
+                        <div class="effect-name">은하수 물결</div>
+                        <div class="effect-trigger">트리거: 천천히 걸을 때</div>
+                        <div class="effect-desc">잔잔한 별빛이 물결치듯 퍼짐</div>
+                    </div>
+                    <div class="effect-card">
+                        <div class="effect-name">하트 버스트</div>
+                        <div class="effect-trigger">트리거: 함께 멈출 때</div>
+                        <div class="effect-desc">발 아래서 하트 모양 빛이 솟아오름</div>
+                    </div>
+                    <div class="effect-card">
+                        <div class="effect-name">오로라 댄스</div>
+                        <div class="effect-trigger">트리거: 빠르게 걸을 때</div>
+                        <div class="effect-desc">오로라처럼 역동적인 빛의 춤</div>
+                    </div>
+                    <div class="effect-card">
+                        <div class="effect-name">별똥별 샤워</div>
+                        <div class="effect-trigger">트리거: 손을 잡고 걸을 때</div>
+                        <div class="effect-desc">머리 위로 별똥별이 쏟아지는 효과</div>
+                    </div>
+                </div>
+
+                <h4>예약 안내</h4>
+                <div class="info-grid-4">
+                    <div class="info-card">
+                        <div class="info-icon">📋</div>
+                        <div class="info-label">예약 여부</div>
+                        <div class="info-value">필수</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">⏱️</div>
+                        <div class="info-label">소요 시간</div>
+                        <div class="info-value">약 5분</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">👥</div>
+                        <div class="info-label">수용 인원</div>
+                        <div class="info-value">1팀/회</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">⏳</div>
+                        <div class="info-label">평균 대기</div>
+                        <div class="info-value">15~20분</div>
+                    </div>
+                </div>
+                <div class="tip-banner">
+                    <div class="tip-badge">TIP</div>
+                    <div class="tip-text">앱 사전 예약 시 우선 입장 가능</div>
+                </div>
+            </div>
+
+            <div class="figure">
+                <img src="06_오작교레조넌스_체험프로세스.png" alt="오작교 레조넌스 체험 프로세스">
+                <div class="figure-title">[인포그래픽 6] 오작교 레조넌스 사용자 체험 플로우</div>
+                <div class="figure-caption">입장 → 동기화 → 공명 → 클라이맥스 → 완주의 5단계 인터랙션 및 4종 빛 효과</div>
+            </div>
+
+            <!-- ===== 킬러 콘텐츠 4: 글로벌 러브 시그널 ===== -->
+            <div class="content-card">
+                <div class="content-card-header">
+                    <div class="content-card-number">4</div>
+                    <div>
+                        <div class="content-card-title">글로벌 러브 시그널 Global Love Signal</div>
+                        <div class="content-card-subtitle">온-오프라인 하이브리드 대형 이벤트 | 만족도 98% · 공유율 95% · 구매의향 75%</div>
+                    </div>
+                </div>
+                <p>전 세계에서 보내는 사랑의 메시지가 남원 하늘에 드론 군집 쇼로 표현됩니다. 온라인 참여자들의 메시지가 실시간으로 빛이 되는, 가장 감동적인 피날레 콘텐츠입니다.</p>
+
+                <h4>기술 사양</h4>
+                <div class="spec-grid">
+                    <div class="spec-item">
+                        <div class="spec-label">드론</div>
+                        <div class="spec-value">Intel Shooting Star 500대</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">최대 고도</div>
+                        <div class="spec-value">120m</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">비행 시간</div>
+                        <div class="spec-value">약 20분</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">형상 수</div>
+                        <div class="spec-value">50개 이상</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">색상</div>
+                        <div class="spec-value">RGB 1,600만 색상</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">안전</div>
+                        <div class="spec-value">자동 충돌 회피, GPS 정밀 비행</div>
+                    </div>
+                </div>
+
+                <h4>쇼 타임라인 (20분)</h4>
+                <table>
+                    <tr><th style="width:80px;">시간</th><th>연출 내용</th></tr>
+                    <tr><td><strong>0:00</strong></td><td>드론 이륙, 하늘에 '루미나 춘향' 글자 형성</td></tr>
+                    <tr><td><strong>2:00</strong></td><td>춘향과 몽룡 캐릭터 형상 등장</td></tr>
+                    <tr><td><strong>5:00</strong></td><td>참여자 메시지 하트 형상으로 표시</td></tr>
+                    <tr><td><strong>10:00</strong></td><td>오작교 형상과 은하수 연출</td></tr>
+                    <tr><td><strong>15:00</strong></td><td>전 세계 국기 릴레이</td></tr>
+                    <tr><td><strong>18:00</strong></td><td>피날레: 거대 하트와 불꽃놀이 연출</td></tr>
+                </table>
+
+                <h4>참여 방법</h4>
+                <div class="participation-grid">
+                    <div class="participation-card" style="border-top: 3px solid var(--accent-cyan);">
+                        <h5>🌐 온라인 참여</h5>
+                        <div class="p-row"><span class="p-label">참여 방법</span><span class="p-value">공식 웹사이트 또는 앱</span></div>
+                        <div class="p-row"><span class="p-label">마감</span><span class="p-value">공연 3시간 전까지</span></div>
+                        <div class="p-row"><span class="p-label">비용</span><span class="p-value">무료</span></div>
+                        <div class="p-row"><span class="p-label">제한</span><span class="p-value">회당 1,000건 선착순</span></div>
+                    </div>
+                    <div class="participation-card" style="border-top: 3px solid var(--accent-gold);">
+                        <h5>📍 현장 참여</h5>
+                        <div class="p-row"><span class="p-label">참여 방법</span><span class="p-value">현장 키오스크 또는 앱</span></div>
+                        <div class="p-row"><span class="p-label">마감</span><span class="p-value">공연 30분 전까지</span></div>
+                        <div class="p-row"><span class="p-label">비용</span><span class="p-value">무료</span></div>
+                        <div class="p-row"><span class="p-label">제한</span><span class="p-value">회당 500건 선착순</span></div>
+                    </div>
+                </div>
+
+                <h4>라이브 스트리밍</h4>
+                <p style="margin-bottom:5px;"><strong>스트리밍 플랫폼:</strong></p>
+                <div class="platform-pills">
+                    <span class="platform-pill">YouTube</span>
+                    <span class="platform-pill">Instagram Live</span>
+                    <span class="platform-pill">TikTok Live</span>
+                </div>
+                <p style="margin-bottom:5px;"><strong>지원 언어:</strong></p>
+                <div class="platform-pills">
+                    <span class="lang-pill">한국어</span>
+                    <span class="lang-pill">영어</span>
+                    <span class="lang-pill">일본어</span>
+                    <span class="lang-pill">중국어</span>
+                </div>
+                <ul>
+                    <li><strong>멀티앵글:</strong> 지원 (드론 시점 / 정면 / 측면 선택 가능)</li>
+                    <li><strong>아카이브:</strong> 공연 종료 후 24시간 내 VOD 업로드</li>
+                </ul>
+
+                <h4>운영 일정</h4>
+                <ul>
+                    <li><strong>정규:</strong> 매일 21:00 (약 20분)</li>
+                    <li><strong>특별:</strong> 토요일 21:00 + 22:00 (더블 헤더)</li>
+                    <li><strong>기상:</strong> 풍속 8m/s 이상, 강수 시 취소</li>
+                </ul>
+            </div>
+
+            <div class="figure">
+                <img src="07_글로벌러브시그널_온오프연계.png" alt="글로벌 러브 시그널 온오프 연계">
+                <div class="figure-title">[인포그래픽 7] 글로벌 러브 시그널 온-오프라인 연계 구조</div>
+                <div class="figure-caption">글로벌 참여(1,000+500건) → 드론 쇼 6단계 → 3개 플랫폼 4개 언어 라이브 스트리밍</div>
+            </div>
+        </div>
+
+        <!-- ==================== Chapter 04: 마케팅 ==================== -->
+        <div class="content-page">
+            <div class="chapter-header">
+                <div class="chapter-number">CHAPTER 04</div>
+                <div class="chapter-title">홍보 및 마케팅 전략</div>
+            </div>
+
+            <h2>4.1 마케팅 슬로건 및 키 비주얼</h2>
+            <div class="highlight-box">
+                <strong>슬로건:</strong><br>
+                <span style="font-size: 14pt; color: var(--primary-purple);">"Love in Light, Bloom in Namwon"</span><br>
+                <span style="font-size: 12pt;">빛으로 그린 사랑, 남원에서 피어나다</span>
+            </div>
+            <p><strong>키 비주얼:</strong> 한복을 입은 춘향과 몽룡의 실루엣이 네온 빛으로 빛나는 오작교 위에 서 있고, 그들 주변으로 디지털 입자 형태의 꽃잎이 흩날리는 '사이버 펑크'와 '전통'의 조화 이미지. MZ세대가 선호하는 <strong>'힙트래디션(Hip Tradition)'</strong>을 겨냥합니다.</p>
+
+            <h2>4.2 단계별 홍보 전략</h2>
+            <table>
+                <tr><th style="width:20%;">단계</th><th style="width:35%;">활동</th><th style="width:45%;">세부 내용</th></tr>
+                <tr><td><strong>D-100 ~ D-50</strong><br>티징 단계</td><td>글로벌 숏폼 챌린지</td><td>#ChunhyangLightChallenge - 스마트폰 플래시로 하트 만들기</td></tr>
+                <tr><td></td><td>시네마틱 트레일러</td><td>넷플릭스 K-드라마 스타일, 낮→밤 반전 매력 강조</td></tr>
+                <tr><td><strong>D-50 ~ D-Day</strong><br>붐업 단계</td><td>인플루언서 팸투어</td><td>야간 사진 작가, 커플 유튜버, 글로벌 여행 인플루언서</td></tr>
+                <tr><td></td><td>얼리버드 패키지</td><td>'Moonlight Pass' - 스마트 합죽선 + 숙박권 + 카페 이용권</td></tr>
+                <tr><td><strong>D-Day ~</strong><br>현장 확산</td><td>실시간 라이브</td><td>드론쇼 & 미디어 파사드 유튜브 전 세계 송출 (4개 언어)</td></tr>
+                <tr><td></td><td>인증샷 이벤트</td><td>스마트 합죽선 사진 업로드 → 남원 특산물 증정</td></tr>
+            </table>
+
+            <h2>4.3 인터랙티브 웹 기획안</h2>
+            <p>인쇄물 기획안과 병행하여 <strong>인터랙티브 웹 기획안</strong>(lumina-chunhyang.vercel.app)을 운영합니다. 심사위원 및 관계자가 기획 의도를 직접 체험할 수 있도록 설계하였습니다.</p>
+
+            <div class="web-feature-grid">
+                <div class="web-feature">
+                    <h5>스크롤 애니메이션 기반 스토리텔링</h5>
+                    <p>사계절 사랑 여정을 스크롤하며 시각적으로 체험. Framer Motion 기반 ScrollReveal, StaggerContainer로 섹션별 순차 등장 효과 적용.</p>
+                    <span class="web-tag">Next.js 16 + Framer Motion</span>
+                </div>
+                <div class="web-feature">
+                    <h5>킬러 콘텐츠 상세 페이지</h5>
+                    <p>각 콘텐츠의 기술 사양, 시간표, 촬영 가이드, 예약 안내, 참여 방법, 라이브 스트리밍 정보를 인터랙티브하게 표시.</p>
+                    <span class="web-tag">데이터 기반 동적 렌더링</span>
+                </div>
+                <div class="web-feature">
+                    <h5>계절별 테마 디자인</h5>
+                    <p>"달빛 아래 춘향의 밤" 디자인 시스템 적용. 계절별 컬러(봄 분홍, 여름 청록, 가을 금색, 겨울 하늘색), 글로우 효과, 한지 텍스처.</p>
+                    <span class="web-tag">CSS 커스텀 디자인 시스템</span>
+                </div>
+                <div class="web-feature">
+                    <h5>콘텐츠 간 네비게이션</h5>
+                    <p>킬러 콘텐츠 ↔ 스토리텔링 시즌 페이지 간 연결 배너로 춘향전 서사와 기술 콘텐츠의 유기적 관계를 시각화.</p>
+                    <span class="web-tag">스토리 연결 UX</span>
+                </div>
+            </div>
+
+            <div class="figure">
+                <img src="08_마케팅홍보_로드맵.png" alt="마케팅 홍보 로드맵">
+                <div class="figure-title">[인포그래픽 8] 단계별 마케팅 홍보 로드맵</div>
+                <div class="figure-caption">티징 → 붐업 → 현장 확산의 3단계 타임라인 및 웹 기획안 연계</div>
+            </div>
+        </div>
+
+        <!-- ==================== Chapter 05: 기대효과 ==================== -->
+        <div class="content-page">
+            <div class="chapter-header">
+                <div class="chapter-number">CHAPTER 05</div>
+                <div class="chapter-title">기대효과 및 경제적 파급효과 분석</div>
+            </div>
+
+            <h2>5.1 정량적 기대효과</h2>
+            <table>
+                <tr><th>구분</th><th>2025년 (추정)</th><th>2026년 (목표)</th><th>증가율</th><th>비고</th></tr>
+                <tr><td><strong>총 방문객 수</strong></td><td>120만 명</td><td>150만 명</td><td style="color:#c0392b;font-weight:bold;">+25%</td><td>글로벌 타겟 확장</td></tr>
+                <tr><td><strong>야간 방문객 비율</strong></td><td>30%</td><td>55%</td><td style="color:#c0392b;font-weight:bold;">+25%p</td><td>4대 킬러 콘텐츠</td></tr>
+                <tr><td><strong>체류 시간</strong></td><td>평균 3.5시간</td><td>평균 6시간</td><td style="color:#c0392b;font-weight:bold;">+71%</td><td>야간 공연 관람</td></tr>
+                <tr><td><strong>1인당 소비액</strong></td><td>50,000원</td><td>85,000원</td><td style="color:#c0392b;font-weight:bold;">+70%</td><td>저녁 식사/숙박</td></tr>
+                <tr class="table-highlight"><td><strong>직접 경제 효과</strong></td><td>약 600억 원</td><td>약 1,275억 원</td><td style="color:#c0392b;font-weight:bold;">+112%</td><td>소비액×방문객 수</td></tr>
+            </table>
+
+            <h2>5.2 콘텐츠별 기대효과</h2>
+            <table>
+                <tr><th>킬러 콘텐츠</th><th>만족도</th><th>SNS 공유율</th><th>구매의향</th><th>핵심 차별점</th></tr>
+                <tr><td><strong>스마트 합죽선</strong></td><td>94%</td><td>78%</td><td>85%</td><td>수익형 기념품, AR 연동</td></tr>
+                <tr><td><strong>개화하는 누각</strong></td><td>97%</td><td>89%</td><td>72%</td><td>문화재 미디어파사드, 4편 시나리오</td></tr>
+                <tr><td><strong>오작교 레조넌스</strong></td><td>96%</td><td>92%</td><td>68%</td><td>커플 인터랙션, 4종 빛 효과</td></tr>
+                <tr><td><strong>글로벌 러브 시그널</strong></td><td>98%</td><td>95%</td><td>75%</td><td>500대 드론, 글로벌 실시간 참여</td></tr>
+                <tr class="table-highlight"><td><strong>평균</strong></td><td><strong>96.3%</strong></td><td><strong>88.5%</strong></td><td><strong>75%</strong></td><td></td></tr>
+            </table>
+
+            <h2>5.3 정성적 기대효과</h2>
+            <div class="keyword-grid">
+                <div class="keyword-item">
+                    <div class="icon">🏛️</div>
+                    <div class="label">도시 브랜드 강화</div>
+                    <div class="desc">'전통 문화 도시'에서<br>'스마트 헤리티지 도시'로</div>
+                </div>
+                <div class="keyword-item">
+                    <div class="icon">🌍</div>
+                    <div class="label">글로벌 인지도 제고</div>
+                    <div class="desc">춘향제를<br>'한국의 대표 밤 축제'로 각인</div>
+                </div>
+                <div class="keyword-item">
+                    <div class="icon">♻️</div>
+                    <div class="label">지속 가능성 확보</div>
+                    <div class="desc">콘텐츠 중심의<br>친환경 축제 모델</div>
+                </div>
+            </div>
+
+            <div class="figure">
+                <img src="09_경제적파급효과_전망.png" alt="경제적 파급효과 전망">
+                <div class="figure-title">[인포그래픽 9] 정량적 기대효과 및 경제적 파급효과</div>
+                <div class="figure-caption">2025년 대비 2026년 목표 비교 차트 및 콘텐츠별 만족도/공유율 분석</div>
+            </div>
+        </div>
+
+        <!-- ==================== Chapter 06: 운영 ==================== -->
+        <div class="content-page">
+            <div class="chapter-header">
+                <div class="chapter-number">CHAPTER 06</div>
+                <div class="chapter-title">운영 및 리스크 관리 계획</div>
+            </div>
+
+            <h2>6.1 문화재 보호 및 안전 관리</h2>
+            <table>
+                <tr><th style="width:25%;">관리 영역</th><th>실행 방안</th></tr>
+                <tr><td><strong>빛 공해 방지</strong></td><td>국제조명위원회(CIE) 기준 준수, 상향광 최소화, 컷오프 조명 사용<br>목조 건축물에는 UV/IR 방출 없는 특수 LED 광원만 사용</td></tr>
+                <tr><td><strong>시설물 관리</strong></td><td>'No-Nailing, No-Drilling' 원칙 고수<br>밸러스트(무게추) 방식 지지대, 보호 패드 부착</td></tr>
+                <tr><td><strong>드론 안전</strong></td><td>자동 충돌 회피 시스템, GPS 정밀 비행<br>풍속 8m/s 이상 또는 강수 시 자동 취소</td></tr>
+            </table>
+
+            <h2>6.2 인파 관리 및 안전</h2>
+            <ul>
+                <li><strong>스마트 혼잡도 모니터링:</strong> LiDAR 센서, CCTV AI 피플 카운팅 → 앱으로 구역별 혼잡도 실시간 제공</li>
+                <li><strong>사전 예약제:</strong> 오작교 레조넌스(1팀/회, 평균 대기 15~20분) 등 병목 구간은 앱 통한 Time Slot 예약제 운영</li>
+                <li><strong>4개 계절 구역 분산 운영:</strong> 광한루원 내 동문·오작교·산책로·중앙로에 구역 분리, 체류 분산 유도</li>
+            </ul>
+
+            <h2>6.3 ESG 실천 계획</h2>
+            <ul>
+                <li><strong>친환경 굿즈:</strong> 스마트 합죽선은 대나무+한지 사용, 전자 모듈은 축제 후 수거→보증금 환급/재활용</li>
+                <li><strong>지역 상생:</strong> 디지털 여권 스탬프 투어에 지역 소상공인 포함 → 경제적 이익 환원</li>
+                <li><strong>디지털 우선:</strong> 인쇄물 최소화, 모든 안내·티켓·사진을 앱 기반으로 운영</li>
+            </ul>
+
+            <div class="figure">
+                <img src="10_운영관리_지속가능성.png" alt="운영 관리 및 지속가능성">
+                <div class="figure-title">[인포그래픽 10] 운영 관리 및 지속가능성 사이클</div>
+                <div class="figure-caption">문화재 안전 → 스마트 인파 관리 → ESG 실천의 순환 구조</div>
+            </div>
+        </div>
+
+        <!-- ==================== 결론 ==================== -->
+        <div class="content-page">
+            <div class="chapter-header">
+                <div class="chapter-number">CONCLUSION</div>
+                <div class="chapter-title">결론: 남원의 빛, 세계를 잇다</div>
+            </div>
+
+            <div class="highlight-box" style="font-size: 12pt; text-align: center; padding: 30px;">
+                <strong>"루미나 춘향"</strong>은 단순히 밤을 밝히는 조명 행사가 아닙니다.<br><br>
+                이는 <strong>600년 전의 춘향전</strong>이 <strong>2026년의 디지털 기술</strong>을 만나<br>
+                새롭게 <strong>'피어나는(Blooming)'</strong> 문화적 사건입니다.
+            </div>
+
+            <p>본 기획안이 제시하는 4대 킬러 콘텐츠는 단순한 구상이 아니라, <strong>구체적인 기술 사양, 운영 시간표, 예약 시스템, 가격 정보, 글로벌 참여 방법</strong>까지 설계된 실행 가능한 계획입니다.</p>
+
+            <table>
+                <tr><th>콘텐츠</th><th>핵심 가치</th><th>기술 하이라이트</th></tr>
+                <tr><td><strong>스마트 합죽선</strong></td><td>전통 공예 × IoT</td><td>RGB LED 24개, AR 4종, 3가지 가격대</td></tr>
+                <tr><td><strong>개화하는 누각</strong></td><td>문화재 × 미디어아트</td><td>8K 프로젝션 6대, 4편 시나리오, 촬영 가이드</td></tr>
+                <tr><td><strong>오작교 레조넌스</strong></td><td>체험 × 감성 기술</td><td>500개 센서, 4종 빛 효과, 5단계 체험 플로우</td></tr>
+                <tr><td><strong>글로벌 러브 시그널</strong></td><td>로컬 × 글로벌</td><td>500대 드론, 4개 언어 실시간, 1,500건/회 참여</td></tr>
+            </table>
+
+            <p>과거의 춘향제가 이야기를 <strong>'들려주는'</strong> 방식이었다면, 2026년의 춘향제는 방문객이 직접 빛을 밝히고, 메시지를 띄우며 이야기를 <strong>'완성하는'</strong> 축제가 될 것입니다.</p>
+
+            <p>오작교 위에서 맞잡은 손이 만들어내는 빛의 파동처럼, 제96회 춘향제는 <strong>남원과 세계, 전통과 미래, 사람과 사람을 잇는 가장 아름다운 연결 고리</strong>가 될 것임을 확신합니다.</p>
+
+            <div style="text-align: center; margin: 50px 0; padding: 40px; background: linear-gradient(135deg, var(--primary-dark), var(--primary-purple)); border-radius: 12px; color: white;">
+                <p style="font-family: 'Noto Serif KR', serif; font-size: 18pt; margin: 0; font-style: italic;">
+                    "2026년 봄, 남원의 밤은<br>당신의 사랑으로 피어납니다."
+                </p>
+                <p style="font-size: 10pt; margin-top: 15px; color: rgba(255,255,255,0.7);">
+                    웹 기획안: lumina-chunhyang.vercel.app
+                </p>
+            </div>
+
+            <div class="references">
+                <h3>참고 자료 및 출처</h3>
+                <ol>
+                    <li>제95회 춘향제 콘텐츠 아이디어 공모전 최우수상 제안서 (NEW 장원급제)</li>
+                    <li>제96회 춘향제 주제 및 일정, 공모 요강 (서울경제TV, 연합뉴스)</li>
+                    <li>남원시 도시브랜드 '피어나다 남원' 의미 및 BI 분석 (노컷뉴스, 조선일보)</li>
+                    <li>글로벌 춘향제 확장 전략 및 해외 참가국 현황 (춘향제 조직위, 코리아넷)</li>
+                    <li>2026 관광 트렌드 'Dualism', 'Digital Humanity' 분석 (한국관광공사, 코리아타임스)</li>
+                    <li>2025-2026 야간 관광(Noctourism) 트렌드 분석 (Aramark, TimeOut)</li>
+                    <li>광한루원 문화재 현황 및 헤리티지 보존 기술 가이드라인 (VisitKorea, 코리아중앙데일리)</li>
+                    <li>워터 스크린 프로젝션 및 미디어아트 기술 사례 (MTProjection, Rabcup, KCCUK)</li>
+                    <li>스마트 웨어러블(LED 팔찌/부채) 기술 및 군중 동기화 (TicketFairy, Hookaba)</li>
+                    <li>드론 쇼 스토리텔링 및 K-콘텐츠 연계 사례 (VADroneShows, YouTube)</li>
+                    <li>생성형 AI 기반 프로젝션 맵핑 및 인터랙티브 아트 기술 (HeavyM, Jason Bruges Studio)</li>
+                </ol>
+            </div>
+
+            <div class="page-number">— END —</div>
+        </div>
+    </div>
+</body>
+</html>
