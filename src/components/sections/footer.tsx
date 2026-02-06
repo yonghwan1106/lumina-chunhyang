@@ -1,10 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ExternalLink, Mail, Phone, MapPin } from "lucide-react";
 import { siteContent } from "@/data/content";
 import { ScrollReveal } from "@/components/shared/scroll-reveal";
-import { InfographicCard } from "@/components/shared/infographic-card";
 
 // 등불 아이콘 SVG
 function LanternIcon({ className }: { className?: string }) {
@@ -110,14 +110,26 @@ export function Footer() {
           </div>
         </ScrollReveal>
 
-        {/* Infographic */}
+        {/* Visual Banner */}
         <ScrollReveal delay={0.2}>
-          <div className="max-w-4xl mx-auto mb-16">
-            <InfographicCard
-              src="/images/infographics/10-sustainability.png"
-              alt="운영 관리 및 지속가능성"
-              title="지속가능한 축제 운영 전략"
-            />
+          <div className="max-w-5xl mx-auto mb-16">
+            <div className="relative rounded-2xl overflow-hidden border border-primary/20">
+              <Image
+                src="/images/infographics/footer-visual.png"
+                alt="루미나 춘향 - 광한루와 오작교의 환상적인 야경"
+                width={1920}
+                height={1080}
+                className="w-full h-auto object-cover"
+                sizes="(max-width: 1280px) 100vw, 1200px"
+              />
+              {/* 그라데이션 오버레이 */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-center">
+                <p className="text-lg md:text-xl font-accent text-foreground/90 text-glow-moon">
+                  광한루의 밤, 오작교 위의 사랑
+                </p>
+              </div>
+            </div>
           </div>
         </ScrollReveal>
 
