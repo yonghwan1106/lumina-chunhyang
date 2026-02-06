@@ -75,13 +75,6 @@ export function ContentsListContent() {
                           className="object-contain p-4 bg-card group-hover:scale-105 transition-transform duration-500"
                           sizes="(max-width: 768px) 100vw, 50vw"
                         />
-                        <div className={cn(
-                          "absolute top-4 left-4 px-3 py-1 rounded-full text-sm font-medium",
-                          colors.bg,
-                          colors.text
-                        )}>
-                          {content.subtitle}
-                        </div>
                       </div>
 
                       {/* Content */}

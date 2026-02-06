@@ -21,8 +21,8 @@ export const siteContent = {
       {
         icon: "Users",
         title: "방문객 유치",
-        value: "100만",
-        unit: "명 목표",
+        value: "100",
+        unit: "만 명 목표",
         description: "국내외 축제 방문객 목표",
       },
       {

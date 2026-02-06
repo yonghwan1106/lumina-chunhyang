@@ -125,44 +125,51 @@ export function ContentDetailPage({ content }: ContentDetailPageProps) {
         </Link>
       </div>
 
-      {/* Main Content */}
+      {/* Infographic - Full Width */}
       <section className="py-8 px-4 bg-card/50">
+        <div className="container mx-auto max-w-5xl">
+          <ScrollReveal>
+            <div className={cn("relative rounded-2xl overflow-hidden border", colors.border)}>
+              <div className="relative w-full">
+                <Image
+                  src={content.image}
+                  alt={content.title}
+                  width={1200}
+                  height={800}
+                  className="w-full h-auto object-contain bg-card"
+                  sizes="(max-width: 1280px) 100vw, 1200px"
+                  priority
+                />
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Features & Stats */}
+      <section className="py-12 px-4 bg-gradient-to-b from-card/50 to-background">
         <div className="container mx-auto max-w-6xl">
-          <div className="grid lg:grid-cols-2 gap-8 mb-12">
-            {/* Image */}
+          <div className="grid lg:grid-cols-2 gap-8">
+            {/* Features */}
             <ScrollReveal>
-              <div className={cn("relative rounded-2xl overflow-hidden border", colors.border)}>
-                <div className="aspect-[4/3] relative">
-                  <Image
-                    src={content.image}
-                    alt={content.title}
-                    fill
-                    className="object-contain p-6 bg-card"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                </div>
+              <div className="space-y-6">
+                <h3 className="text-xl font-semibold text-foreground">주요 기능</h3>
+                <ul className="grid grid-cols-1 gap-3">
+                  {content.features.map((feature) => (
+                    <li key={feature} className="flex items-center gap-3 text-muted-foreground">
+                      <ChevronRight className={cn("w-5 h-5 flex-shrink-0", colors.text)} />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </ScrollReveal>
 
-            {/* Info */}
+            {/* Stats */}
             <ScrollReveal delay={0.2}>
               <div className="space-y-6">
-                {/* Features */}
-                <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-4">주요 기능</h3>
-                  <ul className="grid grid-cols-1 gap-3">
-                    {content.features.map((feature) => (
-                      <li key={feature} className="flex items-center gap-3 text-muted-foreground">
-                        <ChevronRight className={cn("w-5 h-5 flex-shrink-0", colors.text)} />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Stats */}
-                <div className="space-y-4 pt-6 border-t border-border/50">
-                  <h3 className="text-lg font-semibold text-foreground">기대 효과</h3>
+                <h3 className="text-xl font-semibold text-foreground">기대 효과</h3>
+                <div className="space-y-4">
                   <StatBar label="만족도" value={content.stats.satisfaction} color={content.color} />
                   <StatBar label="SNS 공유율" value={content.stats.shareRate} color={content.color} />
                   <StatBar label="구매 의향" value={content.stats.purchaseIntent} color={content.color} />
