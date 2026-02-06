@@ -50,8 +50,14 @@ export default function RootLayout({
       <body
         className={`${notoSerifKR.variable} ${nanumMyeongjo.variable} antialiased bg-background text-foreground`}
       >
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-md focus:outline-none"
+        >
+          본문 바로가기
+        </a>
         <Navigation />
-        <main>{children}</main>
+        <main id="main-content">{children}</main>
         <Footer />
       </body>
     </html>

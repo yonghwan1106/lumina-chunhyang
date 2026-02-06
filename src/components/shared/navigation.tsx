@@ -16,6 +16,7 @@ function LanternIcon({ className }: { className?: string }) {
       fill="none"
       className={className}
       xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
     >
       <path
         d="M12 2C12 2 10 4 10 6C10 8 12 10 12 10C12 10 14 8 14 6C14 4 12 2 12 2Z"
@@ -138,6 +139,9 @@ export function Navigation() {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden relative p-2 rounded-lg hover:bg-muted/50 transition-colors"
+            aria-label={isMobileMenuOpen ? "메뉴 닫기" : "메뉴 열기"}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             <AnimatePresence mode="wait">
               {isMobileMenuOpen ? (
@@ -148,7 +152,7 @@ export function Navigation() {
                   exit={{ rotate: 90, opacity: 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <X className="w-6 h-6" />
+                  <X className="w-6 h-6" aria-hidden="true" />
                 </motion.div>
               ) : (
                 <motion.div
@@ -158,7 +162,7 @@ export function Navigation() {
                   exit={{ rotate: -90, opacity: 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Menu className="w-6 h-6" />
+                  <Menu className="w-6 h-6" aria-hidden="true" />
                 </motion.div>
               )}
             </AnimatePresence>
@@ -170,10 +174,14 @@ export function Navigation() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
+            id="mobile-menu"
             className="fixed inset-0 z-40 md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            role="dialog"
+            aria-modal="true"
+            aria-label="모바일 네비게이션 메뉴"
           >
             {/* 배경 */}
             <motion.div

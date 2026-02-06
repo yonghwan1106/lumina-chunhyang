@@ -1,3 +1,7 @@
+// 루미나 춘향 사계절 스토리 데이터
+// 참고: 모든 시즌은 2026 춘향제 기간(4/15~5/15) 내 테마 구역으로 운영됩니다.
+// 각 시즌은 광한루원 내 별도 구역에서 동시에 체험할 수 있습니다.
+
 export const storySeasons = {
   spring: {
     id: "spring",
@@ -41,7 +45,8 @@ export const storySeasons = {
     schedule: {
       period: "4월 15일 ~ 5월 15일",
       mainShow: "19:00 / 20:30 / 22:00",
-      duration: "약 20분"
+      duration: "약 20분",
+      zone: "광한루원 동문 입구 · 춘향관 구역"
     },
     color: "spring",
     gradient: "from-pink-400 via-pink-300 to-rose-200",
@@ -86,9 +91,10 @@ export const storySeasons = {
       { name: "별빛 터널", location: "춘향테마파크 입구" }
     ],
     schedule: {
-      period: "7월 1일 ~ 8월 31일",
+      period: "4월 15일 ~ 5월 15일",
       mainShow: "20:00 / 21:30 / 23:00",
-      duration: "약 25분"
+      duration: "약 25분",
+      zone: "오작교 · 연못 동쪽 구역"
     },
     nightFoodZone: [
       { name: "여름밤 야식존", items: ["남원 추어탕", "시원한 막국수", "빙수"] },
@@ -138,9 +144,10 @@ export const storySeasons = {
       { name: "그리움 전망대", location: "광한루 2층" }
     ],
     schedule: {
-      period: "10월 1일 ~ 11월 15일",
+      period: "4월 15일 ~ 5월 15일",
       mainShow: "18:30 / 20:00 / 21:30",
-      duration: "약 20분"
+      duration: "약 20분",
+      zone: "광한루원 산책로 · 춘향사당 구역"
     },
     letterWriting: {
       location: "춘향관 체험실",
@@ -191,10 +198,11 @@ export const storySeasons = {
       { name: "드론쇼 전망대", location: "춘향테마파크 언덕" }
     ],
     schedule: {
-      period: "12월 15일 ~ 2월 28일",
+      period: "4월 15일 ~ 5월 15일",
       mainShow: "18:00 / 19:30 / 21:00",
       droneShow: "매주 토요일 21:00 (1회)",
-      duration: "약 30분 (드론쇼 포함)"
+      duration: "약 30분 (드론쇼 포함)",
+      zone: "광한루원 중앙로 · 춘향테마파크 구역"
     },
     finale: {
       name: "글로벌 러브 시그널",

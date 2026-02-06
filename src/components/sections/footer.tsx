@@ -14,6 +14,7 @@ function LanternIcon({ className }: { className?: string }) {
       fill="none"
       className={className}
       xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
     >
       <path
         d="M12 2C12 2 10 4 10 6C10 8 12 10 12 10C12 10 14 8 14 6C14 4 12 2 12 2Z"
@@ -94,14 +95,14 @@ export function Footer() {
             </p>
 
             <motion.a
-              href="#"
+              href="mailto:lumina@namwon.go.kr?subject=루미나 춘향 2026 참여 문의"
               className="group relative inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-primary to-primary-deep text-white font-medium text-lg overflow-hidden"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
             >
               <span className="relative z-10 flex items-center gap-2">
                 {footer.cta}
-                <ExternalLink className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ExternalLink className="w-5 h-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
               </span>
               <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-secondary to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -167,7 +168,7 @@ export function Footer() {
                       href={link.href}
                       className="group flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
                     >
-                      <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                       {link.label}
                     </a>
                   </li>

@@ -132,9 +132,9 @@ export const siteContent = {
     cta: "참여 문의하기",
     copyright: "© 2026 남원시. All rights reserved.",
     links: [
-      { label: "춘향제 공식 홈페이지", href: "#" },
-      { label: "남원시 관광 안내", href: "#" },
-      { label: "파트너십 문의", href: "#" },
+      { label: "춘향제 공식 홈페이지", href: "https://www.chunhyang.or.kr" },
+      { label: "남원시 관광 안내", href: "https://www.namwon.go.kr/tour" },
+      { label: "파트너십 문의", href: "mailto:lumina@namwon.go.kr" },
     ],
   },
 };

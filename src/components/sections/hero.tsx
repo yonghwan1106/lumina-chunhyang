@@ -1,9 +1,23 @@
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { siteContent } from "@/data/content";
+
+// 모바일 감지 훅
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  return isMobile;
+}
 
 interface Lantern {
   id: number;
@@ -76,7 +90,7 @@ function CherryBlossomPetal({ petal }: { petal: CherryPetal }) {
         ease: "linear",
       }}
     >
-      <svg viewBox="0 0 20 20" className="w-full h-full">
+      <svg viewBox="0 0 20 20" className="w-full h-full" aria-hidden="true">
         <ellipse
           cx="10"
           cy="10"
@@ -96,9 +110,10 @@ function CherryBlossomPetal({ petal }: { petal: CherryPetal }) {
   );
 }
 
-function StarField() {
+function StarField({ isMobile }: { isMobile: boolean }) {
   const stars = useMemo(() => {
-    return Array.from({ length: 80 }, (_, i) => ({
+    const count = isMobile ? 40 : 80; // 모바일에서 절반으로 감소
+    return Array.from({ length: count }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
@@ -106,7 +121,7 @@ function StarField() {
       delay: Math.random() * 5,
       duration: 3 + Math.random() * 4,
     }));
-  }, []);
+  }, [isMobile]);
 
   return (
     <div className="absolute inset-0 overflow-hidden">
@@ -178,6 +193,7 @@ function MoonGlow() {
 
 export function Hero() {
   const [mounted, setMounted] = useState(false);
+  const isMobile = useIsMobile();
   const { hero } = siteContent;
 
   const lanterns = useMemo(() => {
@@ -188,7 +204,8 @@ export function Hero() {
       "rgba(245, 158, 11, 0.6)",   // 금색 (등불)
     ];
 
-    return Array.from({ length: 12 }, (_, i) => ({
+    const count = isMobile ? 6 : 12; // 모바일에서 절반으로 감소
+    return Array.from({ length: count }, (_, i) => ({
       id: i,
       x: 5 + Math.random() * 90,
       y: 15 + Math.random() * 55,
@@ -197,10 +214,11 @@ export function Hero() {
       duration: 6 + Math.random() * 4,
       color: colors[i % colors.length],
     }));
-  }, []);
+  }, [isMobile]);
 
   const cherryPetals = useMemo(() => {
-    return Array.from({ length: 15 }, (_, i) => ({
+    const count = isMobile ? 8 : 15; // 모바일에서 절반으로 감소
+    return Array.from({ length: count }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       size: 8 + Math.random() * 12,
@@ -208,7 +226,7 @@ export function Hero() {
       duration: 12 + Math.random() * 8,
       rotation: Math.random() * 360,
     }));
-  }, []);
+  }, [isMobile]);
 
   useEffect(() => {
     setMounted(true);
@@ -236,7 +254,7 @@ export function Hero() {
       {mounted && <MoonGlow />}
 
       {/* 별 */}
-      {mounted && <StarField />}
+      {mounted && <StarField isMobile={isMobile} />}
 
       {/* 떠다니는 등불 */}
       {mounted && (
@@ -338,7 +356,7 @@ export function Hero() {
         >
           <span className="relative z-10 flex items-center gap-2">
             {hero.cta}
-            <ChevronDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
+            <ChevronDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" aria-hidden="true" />
           </span>
           {/* 호버 시 글로우 */}
           <motion.div
