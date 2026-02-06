@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Flag, Target, Zap, Rocket, CheckCircle, Calendar, Clock, Users, Megaphone, Monitor, Tv } from "lucide-react";
+import { Flag, Target, Zap, Rocket, CheckCircle, Circle, Clock, Calendar, Megaphone, Monitor, Play } from "lucide-react";
 import { PageHeader } from "@/components/shared/page-header";
 import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/shared/scroll-reveal";
 import { InfographicCard } from "@/components/shared/infographic-card";
@@ -16,30 +16,52 @@ const phaseColors = [
   { bg: "bg-lumina-gold/10", border: "border-lumina-gold/30", text: "text-lumina-gold", fill: "bg-lumina-gold" },
 ];
 
+const statusConfig = {
+  completed: { label: "완료", bg: "bg-green-500/20", text: "text-green-400", icon: CheckCircle },
+  "in-progress": { label: "진행 중", bg: "bg-lumina-secondary/20", text: "text-lumina-secondary", icon: Play },
+  upcoming: { label: "예정", bg: "bg-muted", text: "text-muted-foreground", icon: Circle },
+};
+
 export function RoadmapContent() {
   return (
     <>
       <PageHeader
         title="마케팅 로드맵"
-        subtitle="D-180 to D+30"
+        subtitle={roadmapDetail.overview.subtitle}
         description={roadmapDetail.overview.description}
-        badge="210일 마케팅 전략"
+        badge={`D-Day: ${roadmapDetail.overview.dDay}`}
         badgeColor="gold"
       />
+
+      {/* Current Status Banner */}
+      <section className="py-6 px-4 bg-lumina-secondary/10 border-y border-lumina-secondary/20">
+        <div className="container mx-auto max-w-6xl">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-center">
+            <div className="flex items-center gap-2">
+              <Play className="w-5 h-5 text-lumina-secondary" />
+              <span className="text-lumina-secondary font-semibold">현재 진행 상황:</span>
+            </div>
+            <span className="text-foreground">{roadmapDetail.overview.currentStatus}</span>
+            <span className="hidden md:inline text-muted-foreground">|</span>
+            <span className="text-muted-foreground">그랜드 오프닝까지 <strong className="text-lumina-gold">68일</strong> 남음</span>
+          </div>
+        </div>
+      </section>
 
       {/* Overview Stats */}
       <section className="py-12 px-4 bg-card/50">
         <div className="container mx-auto max-w-6xl">
           <ScrollReveal>
-            <div className="grid grid-cols-3 gap-4 md:gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
               {[
                 { label: "총 기간", value: roadmapDetail.overview.totalDuration, icon: Calendar },
-                { label: "주요 마일스톤", value: `${roadmapDetail.overview.keyMilestones}개`, icon: Flag },
+                { label: "D-Day", value: roadmapDetail.overview.dDay, icon: Flag },
+                { label: "주요 마일스톤", value: `${roadmapDetail.overview.keyMilestones}개`, icon: Target },
                 { label: "마케팅 예산", value: roadmapDetail.overview.totalBudget, icon: Megaphone },
               ].map((stat) => (
                 <div key={stat.label} className="text-center p-4 md:p-6 rounded-2xl bg-muted/30">
                   <stat.icon className="w-6 h-6 md:w-8 md:h-8 text-lumina-gold mx-auto mb-2" />
-                  <div className="text-lg md:text-2xl font-bold text-foreground">{stat.value}</div>
+                  <div className="text-sm md:text-lg font-bold text-foreground">{stat.value}</div>
                   <div className="text-xs md:text-sm text-muted-foreground">{stat.label}</div>
                 </div>
               ))}
@@ -54,6 +76,7 @@ export function RoadmapContent() {
           <ScrollReveal>
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-foreground mb-4">4단계 마케팅 전략</h2>
+              <p className="text-muted-foreground">현재 Phase 2 진행 중</p>
             </div>
           </ScrollReveal>
 
@@ -61,18 +84,34 @@ export function RoadmapContent() {
             {roadmapDetail.phases.map((phase, index) => {
               const Icon = phaseIcons[index];
               const colors = phaseColors[index];
+              const status = statusConfig[phase.status as keyof typeof statusConfig];
+              const StatusIcon = status.icon;
 
               return (
                 <ScrollReveal key={phase.phase} delay={index * 0.1}>
-                  <div className={cn("rounded-2xl border p-6 md:p-8", colors.border)}>
+                  <div className={cn(
+                    "rounded-2xl border p-6 md:p-8 relative overflow-hidden",
+                    colors.border,
+                    phase.status === "in-progress" && "ring-2 ring-lumina-secondary/50"
+                  )}>
+                    {/* Status Badge */}
+                    <div className={cn(
+                      "absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1.5",
+                      status.bg,
+                      status.text
+                    )}>
+                      <StatusIcon className="w-3 h-3" />
+                      {status.label}
+                    </div>
+
                     {/* Header */}
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 pr-20">
                       <div className="flex items-center gap-4 mb-4 md:mb-0">
                         <div className={cn("w-12 h-12 rounded-xl flex items-center justify-center", colors.bg)}>
                           <Icon className={cn("w-6 h-6", colors.text)} />
                         </div>
                         <div>
-                          <span className={cn("text-sm font-semibold", colors.text)}>{phase.phase}</span>
+                          <span className={cn("text-sm font-semibold", colors.text)}>{phase.phase} ({phase.dDay})</span>
                           <h3 className="text-xl font-bold text-foreground">{phase.title}</h3>
                         </div>
                       </div>
@@ -106,19 +145,36 @@ export function RoadmapContent() {
                     {/* Weekly Tasks */}
                     <div className="mb-6">
                       <h4 className="font-semibold text-foreground mb-3">주간 일정</h4>
-                      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 max-h-48 overflow-y-auto">
-                        {phase.weeklyTasks.map((task) => (
-                          <div
-                            key={task.week}
-                            className="flex items-start gap-2 p-3 rounded-lg bg-muted/30"
-                          >
-                            <CheckCircle className={cn("w-4 h-4 mt-0.5 flex-shrink-0", colors.text)} />
-                            <div>
-                              <span className="text-xs text-muted-foreground block">{task.week}</span>
-                              <span className="text-sm text-foreground">{task.task}</span>
+                      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 max-h-60 overflow-y-auto">
+                        {phase.weeklyTasks.map((task) => {
+                          const taskStatus = statusConfig[task.status as keyof typeof statusConfig];
+                          const TaskIcon = taskStatus.icon;
+                          return (
+                            <div
+                              key={task.week}
+                              className={cn(
+                                "flex items-start gap-2 p-3 rounded-lg",
+                                task.status === "completed" ? "bg-green-500/5" :
+                                task.status === "in-progress" ? "bg-lumina-secondary/10 ring-1 ring-lumina-secondary/30" :
+                                "bg-muted/30"
+                              )}
+                            >
+                              <TaskIcon className={cn(
+                                "w-4 h-4 mt-0.5 flex-shrink-0",
+                                task.status === "completed" ? "text-green-400" :
+                                task.status === "in-progress" ? "text-lumina-secondary" :
+                                "text-muted-foreground"
+                              )} />
+                              <div>
+                                <span className="text-xs text-muted-foreground block">{task.week}</span>
+                                <span className={cn(
+                                  "text-sm",
+                                  task.status === "completed" ? "text-muted-foreground line-through" : "text-foreground"
+                                )}>{task.task}</span>
+                              </div>
                             </div>
-                          </div>
-                        ))}
+                          );
+                        })}
                       </div>
                     </div>
 
@@ -136,16 +192,37 @@ export function RoadmapContent() {
                       </div>
                     </div>
 
-                    {/* KPIs */}
+                    {/* KPIs with Progress */}
                     <div>
                       <h4 className="font-semibold text-foreground mb-3">핵심 KPI</h4>
-                      <div className="grid grid-cols-3 gap-4">
-                        {phase.kpis.map((kpi) => (
-                          <div key={kpi.metric} className="text-center">
-                            <div className={cn("text-lg md:text-xl font-bold", colors.text)}>{kpi.target}</div>
-                            <div className="text-xs text-muted-foreground">{kpi.metric}</div>
-                          </div>
-                        ))}
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        {phase.kpis.map((kpi) => {
+                          const targetNum = parseInt(kpi.target.replace(/[^0-9]/g, "")) || 100;
+                          const progress = kpi.current ? Math.min((kpi.current / targetNum) * 100, 100) : 0;
+                          return (
+                            <div key={kpi.metric} className="p-3 rounded-lg bg-muted/20">
+                              <div className="flex justify-between items-center mb-2">
+                                <span className="text-xs text-muted-foreground">{kpi.metric}</span>
+                                <span className={cn("text-sm font-bold", colors.text)}>{kpi.target}</span>
+                              </div>
+                              {phase.status !== "upcoming" && (
+                                <>
+                                  <div className="h-2 bg-muted rounded-full overflow-hidden mb-1">
+                                    <motion.div
+                                      className={cn("h-full rounded-full", colors.fill)}
+                                      initial={{ width: 0 }}
+                                      animate={{ width: `${progress}%` }}
+                                      transition={{ duration: 1, delay: 0.3 }}
+                                    />
+                                  </div>
+                                  <div className="text-xs text-muted-foreground text-right">
+                                    현재: {kpi.current?.toLocaleString() || 0}
+                                  </div>
+                                </>
+                              )}
+                            </div>
+                          );
+                        })}
                       </div>
                     </div>
                   </div>
@@ -162,7 +239,7 @@ export function RoadmapContent() {
           <ScrollReveal>
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-foreground mb-4">마일스톤 타임라인</h2>
-              <p className="text-muted-foreground">주요 일정과 이벤트</p>
+              <p className="text-muted-foreground">주요 일정과 이벤트 (현재 기준: 2026년 2월 6일)</p>
             </div>
           </ScrollReveal>
 
@@ -170,27 +247,55 @@ export function RoadmapContent() {
             {/* Timeline line */}
             <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-border" />
 
-            {roadmapDetail.milestones.map((milestone, index) => (
-              <ScrollReveal key={milestone.date} delay={index * 0.05}>
-                <div className={cn(
-                  "relative flex items-start gap-4 mb-8",
-                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                )}>
-                  {/* Dot */}
-                  <div className="absolute left-4 md:left-1/2 w-3 h-3 rounded-full bg-lumina-primary -translate-x-1/2 mt-2" />
+            {roadmapDetail.milestones.map((milestone, index) => {
+              const isCompleted = milestone.status === "completed";
+              const isCurrent = milestone.date === "2026-02-15"; // 가장 가까운 미래 이벤트
 
-                  {/* Content */}
+              return (
+                <ScrollReveal key={milestone.date} delay={index * 0.05}>
                   <div className={cn(
-                    "ml-10 md:ml-0 md:w-[calc(50%-2rem)]",
-                    index % 2 === 0 ? "md:pr-8 md:text-right" : "md:pl-8"
+                    "relative flex items-start gap-4 mb-8",
+                    index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                   )}>
-                    <span className="text-sm text-lumina-primary font-medium">{milestone.date}</span>
-                    <h4 className="text-lg font-bold text-foreground">{milestone.title}</h4>
-                    <p className="text-sm text-muted-foreground">{milestone.description}</p>
+                    {/* Dot */}
+                    <div className={cn(
+                      "absolute left-4 md:left-1/2 w-3 h-3 rounded-full -translate-x-1/2 mt-2",
+                      isCompleted ? "bg-green-400" :
+                      isCurrent ? "bg-lumina-secondary ring-4 ring-lumina-secondary/30" :
+                      "bg-lumina-primary"
+                    )} />
+
+                    {/* Content */}
+                    <div className={cn(
+                      "ml-10 md:ml-0 md:w-[calc(50%-2rem)]",
+                      index % 2 === 0 ? "md:pr-8 md:text-right" : "md:pl-8"
+                    )}>
+                      <div className="flex items-center gap-2 md:justify-end">
+                        <span className={cn(
+                          "text-sm font-medium",
+                          isCompleted ? "text-green-400" :
+                          isCurrent ? "text-lumina-secondary" :
+                          "text-lumina-primary"
+                        )}>
+                          {milestone.date}
+                        </span>
+                        {isCompleted && (
+                          <span className="text-xs px-2 py-0.5 rounded-full bg-green-500/20 text-green-400">완료</span>
+                        )}
+                        {isCurrent && (
+                          <span className="text-xs px-2 py-0.5 rounded-full bg-lumina-secondary/20 text-lumina-secondary">다음</span>
+                        )}
+                      </div>
+                      <h4 className={cn(
+                        "text-lg font-bold",
+                        isCompleted ? "text-muted-foreground" : "text-foreground"
+                      )}>{milestone.title}</h4>
+                      <p className="text-sm text-muted-foreground">{milestone.description}</p>
+                    </div>
                   </div>
-                </div>
-              </ScrollReveal>
-            ))}
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -210,8 +315,14 @@ export function RoadmapContent() {
                 <div className="card-lumina rounded-xl p-5 border border-border/50">
                   <Monitor className="w-6 h-6 text-lumina-accent mb-3" />
                   <h4 className="font-semibold text-foreground mb-2">{item.tech}</h4>
-                  <p className="text-sm text-muted-foreground mb-2">{item.period}</p>
-                  <span className="inline-block px-2 py-1 rounded-full bg-lumina-accent/10 text-lumina-accent text-xs">
+                  <p className="text-sm text-muted-foreground mb-1">{item.period}</p>
+                  <p className="text-xs text-muted-foreground mb-2">{item.actualPeriod}</p>
+                  <span className={cn(
+                    "inline-block px-2 py-1 rounded-full text-xs",
+                    item.status.includes("완료") ? "bg-green-500/10 text-green-400" :
+                    item.status.includes("진행") || item.status.includes("테스트") ? "bg-lumina-secondary/10 text-lumina-secondary" :
+                    "bg-lumina-accent/10 text-lumina-accent"
+                  )}>
                     {item.status}
                   </span>
                 </div>
@@ -295,7 +406,7 @@ export function RoadmapContent() {
             <InfographicCard
               src="/images/infographics/08-marketing-roadmap.png"
               alt="마케팅 홍보 로드맵"
-              title="D-180 마케팅 홍보 로드맵"
+              title="마케팅 홍보 로드맵 전체 계획"
             />
           </ScrollReveal>
         </div>
