@@ -4,7 +4,7 @@ export const roadmapDetail = {
     subtitle: "D-180 to D+30",
     description: "2026 루미나 춘향의 성공을 위한 체계적인 마케팅 전략과 실행 계획",
     totalDuration: "210일 (D-180 ~ D+30)",
-    keyMilestones: 12,
+    keyMilestones: 13,
     totalBudget: "8억 원"
   },
 
@@ -144,6 +144,7 @@ export const roadmapDetail = {
     { date: "2026-01-15", title: "사전 예약 오픈", description: "공식 예약 시스템 가동" },
     { date: "2026-02-15", title: "얼리버드 종료", description: "할인 예약 마감" },
     { date: "2026-03-01", title: "TV 광고 시작", description: "전국 TV 광고 온에어" },
+    { date: "2026-03-02", title: "제안서 접수 마감", description: "춘향제 홍보 콘텐츠 공모전 마감" },
     { date: "2026-03-15", title: "체험단 방문", description: "500명 체험단 현장 방문" },
     { date: "2026-04-01", title: "미디어 프리뷰", description: "언론사 초청 사전 공개" },
     { date: "2026-04-10", title: "VIP 오프닝", description: "VIP 초청 사전 개막" },
